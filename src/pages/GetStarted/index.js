@@ -1,21 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { ILLogo } from '../../assets';
-import Button from '../../components/atoms/Button/Button';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ILGetStarted, ILLogo } from '../../assets';
+import  Gap  from '../../components/atoms/Gap';
+import  Button from '../../components/atoms/Button/Button';
 
 
 const GetStarted = () => {
     return (
-        <View style={styles.page}>
+        <ImageBackground source={ILGetStarted} style={styles.page}>
             <View>
                 <ILLogo />
                 <Text style={styles.title}>Konsultasi dengan dokter jadi lebih mudah & fleksibel</Text>
             </View>
             <View>
-                <Button />
-                <Button />
+                <Button title="Get Started" />
+                <Gap height={16}/>
+                <Button type='secondary' title="Sign Up"/>
             </View>
-        </View>
+        </ImageBackground>
     );
 };
 
@@ -24,14 +26,15 @@ export default GetStarted;
 const styles = StyleSheet.create({
     page: {
         padding: 40,
-        justifyContent:'space-between',
-        backgroundColor: 'yellow',
-        flex:1
+        justifyContent: 'space-between',
+        backgroundColor: 'white',
+        flex: 1,
+        // alignItems:"center"
     },
     title: {
         fontSize: 28,
-        fontWeight: '600',
-        color: 'black',
+        color: 'white',
         marginTop: 91,
+        fontFamily:"Nunito-SemiBold",
     }
 });

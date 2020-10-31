@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginTop: 20,
         fontWeight: '600',
-        color: '#112340'
+        color: '#112340',
+        fontFamily:"Nunito-SemiBold"
     },
 });
