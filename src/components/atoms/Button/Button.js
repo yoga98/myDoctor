@@ -1,14 +1,15 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Button = ({ type, title }) => {
+const Button = ({ type, title, onPress}) => {
     return (
-        <View style={styles.constainer(type)}>
+        <TouchableOpacity style={styles.constainer(type)} onPress={onPress}>
             <Text style={styles.text(type)}>{title}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
-
+//TouchableOpacity memberikan agar bisa di klik
 export default Button;
 const styles = StyleSheet.create({
     constainer: type => ({
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
         {
             fontSize: 16,
             fontWeight: '600',
-            fontFamily:'Nunito-SemiBold',
+            fontFamily: 'Nunito-SemiBold',
             textAlign: "center",
             color: type === 'secondary' ? '#112340' : '#fff'
         }
