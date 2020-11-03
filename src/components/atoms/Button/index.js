@@ -12,11 +12,13 @@ const Button = ({ type, title, onPress}) => {
 //TouchableOpacity memberikan agar bisa di klik
 export default Button;
 const styles = StyleSheet.create({
+    //jika typenya container stylenya ini
     constainer: type => ({
         backgroundColor: type === 'secondary' ? 'white' : '#0BCAD4',
         paddingVertical: 10,
         borderRadius: 10,
     }),
+    //jika type text maka munculkan ini
     text: (type) => (
         {
             fontSize: 16,

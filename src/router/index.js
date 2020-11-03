@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { GetStarted, Login, Register, Splash } from '../pages';
-
+// Stcak bawaan react-navigation yang sudah di install di awal 
+//screen adalah tampilan yang aakn di tampilkan
 const Stack = createStackNavigator();
-
 const Router = () => {
     return (
         <Stack.Navigator initialRouteName="Splash">
