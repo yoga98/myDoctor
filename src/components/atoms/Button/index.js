@@ -15,7 +15,7 @@ export default Button;
 const styles = StyleSheet.create({
     //jika typenya container stylenya ini
     constainer: type => ({
-        backgroundColor: type === colors.button.secondary.background ? 'white' : colors.button.primary.background,
+        backgroundColor: type === 'secondary' ? colors.button.secondary.background : colors.button.primary.background,
         paddingVertical: 10,
         borderRadius: 10,
     }),
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
             fontWeight: '600',
             fontFamily: 'Nunito-SemiBold',
             textAlign: "center",
-            color: type === colors.button.secondary.text ? '#112340' : colors.button.primary.text
+            color: type === 'secondary' ? colors.button.secondary.text : colors.button.primary.text
         }
-    )
+    )         
 });
