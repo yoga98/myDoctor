@@ -1,0 +1,11 @@
+perbedaan 
+export const namaFungsi
+bisa langsung dipanggi denga cara di index.js lain dengan cara export * from './namaTempat Folder'
+
+sedangkan 
+export default namaFungsi 
+di panggil dengan cara 
+import namafungsi from './namaFolder'
+
+lalu ditulis kembali dengan cara file yang sama
+export {namaFungsi}

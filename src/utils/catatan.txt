@@ -1,0 +1,5 @@
+disini adalah variabel global yang dimana semua fungsi akan berada disini 
+dari fungsi color dan lainnya 
+
+tujuannya
+adalah memudahkan agar saat maintace semua warna maka semuanya akan berubah

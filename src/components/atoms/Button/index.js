@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { colors } from '../../../utils';
 
 const Button = ({ type, title, onPress}) => {
     return (
@@ -14,7 +15,7 @@ export default Button;
 const styles = StyleSheet.create({
     //jika typenya container stylenya ini
     constainer: type => ({
-        backgroundColor: type === 'secondary' ? 'white' : '#0BCAD4',
+        backgroundColor: type === colors.button.secondary.background ? 'white' : colors.button.primary.background,
         paddingVertical: 10,
         borderRadius: 10,
     }),
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
             fontWeight: '600',
             fontFamily: 'Nunito-SemiBold',
             textAlign: "center",
-            color: type === 'secondary' ? '#112340' : '#fff'
+            color: type === colors.button.secondary.text ? '#112340' : colors.button.primary.text
         }
     )
 });
