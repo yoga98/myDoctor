@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { colors } from '../../../utils';
+import { colors, fonst } from '../../../utils';
 import IconOnly from './IconOnly';
 
 //memasukakn props icon type tittle dan onPress
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         {
             fontSize: 16,
             fontWeight: '600',
-            fontFamily: 'Nunito-SemiBold',
+            fontFamily: fonst.primary.[600],
             textAlign: "center",
             color: type === 'secondary' ? colors.button.secondary.text : colors.button.primary.text
         }

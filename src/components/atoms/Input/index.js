@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
-import { colors } from '../../../utils';
+import { colors, fonst } from '../../../utils';
 //label adalah bagian dari prop yang di munculkan di halaman login
 const Input = ({ label }) => {
     return (
@@ -24,6 +24,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: colors.text.secondary,
         marginBottom: 6,
-        fontFamily: 'Nunito-Regular'
+        fontFamily: fonst.primary[400]
     }
 })

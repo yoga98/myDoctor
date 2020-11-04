@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ILLogo } from '../../assets';
-import { colors } from '../../utils';
+import { colors, fonst } from '../../utils';
 
 const Splash = ({ navigation }) => {
     //useeffect adalah adalah hooks pada reactnative
@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         fontWeight: '600',
         color: colors.text.primary,
-        fontFamily: "Nunito-SemiBold"
+        fontFamily: fonst.primary[600]
     },
 });

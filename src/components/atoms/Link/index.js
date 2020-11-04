@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { colors } from '../../../utils'
+import { colors, fonst } from '../../../utils'
 //title dan size merubah ukuran dan teks agar dinamis dalam kurung kurawal/objek
 //aligntext dinamis jadi parameter di masikan parameter agar dinamis
 const Link = ({ title, size,align }) => {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     text:(size,align) => ({
             fontSize: size,
             color: colors.text.secondary ,
-            fontFamily: "Nunito-Regular",
+            fontFamily: fonst.primary[400],
             textDecorationLine: 'underline',
             textAlign: align,
         }),

@@ -2,7 +2,7 @@ import React from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { ILGetStarted, ILLogo } from '../../assets';
 import { Button, Gap } from '../../components';
-import { colors } from '../../utils';
+import { colors, fonst } from '../../utils';
 // import  Gap  from '../../components/atoms/Gap';
 // import  Button from '../../components/atoms/Button/Button';
 
@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
         color: colors.white
         ,
         marginTop: 91,
-        fontFamily:"Nunito-SemiBold",
+        fontFamily:fonst.primary[600],
     }
 });

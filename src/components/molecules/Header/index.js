@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { colors } from '../../../utils';
+import { colors, fonst } from '../../../utils';
 import { Button, Gap } from '../../atoms';
 //memanggil onPress
 //artinya button icon back-dark menjadi event press kembalidarokomponen yang dipunya
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         // backgroundColor:'yellow',
         flex:1,
         fontSize:20,
-        fontFamily:'Nunito-SemiBold',
+        fontFamily: fonst.primary[600],
         color: colors.text.primary
     }
 })
