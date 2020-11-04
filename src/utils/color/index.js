@@ -1,14 +1,14 @@
 //setup color ini terbentuk warna basic
 //mainColor adalah kumpulan warna warna
-const mainColor ={
-    green1:"#0BcAD4",
-    dark1:'#112340',
-    grey1:"#7D8797",
-    grey2:'#E9E9E9'
+const mainColor = {
+    green1: "#0BcAD4",
+    dark1: '#112340',
+    grey1: "#7D8797",
+    grey2: '#E9E9E9'
 }
- export const colors = {
+export const colors = {
     primary: mainColor.green1,
-    secondary:mainColor.dark1,
+    secondary: mainColor.dark1,
     white: 'white',
     black: 'black',
     text: {

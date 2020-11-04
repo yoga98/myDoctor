@@ -1,13 +1,16 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { IconDarkBack} from '../../../assets';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { colors } from '../../../utils';
-import { Gap } from '../../atoms';
-const Header = () => {
+import { Button, Gap } from '../../atoms';
+//memanggil onPress
+//artinya button icon back-dark menjadi event press kembalidarokomponen yang dipunya
+//membuat props title agar dinams 
+//akan muncul di register,
+const Header = ({onPress,title}) => {
     return (
         <View style={styles.container}>
-            <IconDarkBack/>
-            <Text style={styles.text}>Text Header</Text>
+            <Button type="icon-only" icon="back-dark" onPress={onPress}/>
+            <Text style={styles.text}>{title}</Text>
             <Gap width={24}/>
         </View>
     )

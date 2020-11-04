@@ -9,3 +9,7 @@ import namafungsi from './namaFolder'
 
 lalu ditulis kembali dengan cara file yang sama
 export {namaFungsi}
+
+
+//button membuat button dengan icon tampa menggunakan title secara dinamin
+dan menggunakan logika
