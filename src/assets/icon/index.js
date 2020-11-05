@@ -1,3 +1,4 @@
 import IconDarkBack from './cv-backarrow.svg';
-
-export {IconDarkBack};
+import IconAddPhoto from './ic-add.svg';
+import IconRemovePhoto from './ic-failed.svg';
+export {IconDarkBack,IconAddPhoto,IconRemovePhoto};

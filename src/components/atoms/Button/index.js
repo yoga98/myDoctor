@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         {
             fontSize: 16,
             fontWeight: '600',
-            fontFamily: fonst.primary.[600],
+            fontFamily: fonst.primary[600],
             textAlign: "center",
             color: type === 'secondary' ? colors.button.secondary.text : colors.button.primary.text
         }

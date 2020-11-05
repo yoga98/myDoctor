@@ -13,3 +13,5 @@ export {namaFungsi}
 
 //button membuat button dengan icon tampa menggunakan title secara dinamin
 dan menggunakan logika
+
+//Navigate untuk berpindah halaman
