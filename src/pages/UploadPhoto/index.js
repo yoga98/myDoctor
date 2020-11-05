@@ -4,10 +4,10 @@ import { IconAddPhoto, ILNullPhoto } from '../../assets'
 import { Button, Gap, Header, Link } from '../../components'
 import { colors, fonst } from '../../utils'
 //pemanggilan image menggunakan objek bawaan react-native
-const UploadPhoto = () => {
-    return (
+const UploadPhoto = ({navigation}) => {
+    return ( 
         <View style={styles.page}>
-            <Header title="Upload Photo" />
+            <Header title="Upload Photo" onPress={()=> navigation.goBack()} />
             <View style={styles.content}>
                 <View style={styles.profile}>
                     <View style={styles.avatarWallpaper}>

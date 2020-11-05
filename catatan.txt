@@ -15,3 +15,12 @@ export {namaFungsi}
 dan menggunakan logika
 
 //Navigate untuk berpindah halaman
+
+//button tab navigator adalah buttom yg stay ketika berpindah halaman 
+untuk menggunakan tab navigation buka website React navigation dan piluh tab navigation 
+kode ini dimasukan ke bagian route
+const Tab = createBottomTabNavigator();
+
+//untuk membuat tab navigator pergi ke dokumentasi navigation React dan cari 
+navigation
+    ->CreateBottomNavigator
