@@ -8,33 +8,38 @@ const Doctor = () => {
     return (
         <View style={styles.page}>
             <View style={styles.conten}>
-                <HomeProfile />
-                <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini</Text>
-                {/* agar bisa scrol ke samping card piliha dokter maka gunakan SCrollView bawaan
+                {/* menghilangkan scroll bar showsVerticalScrollIndicator */}
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <Gap height={30}/>
+                    <HomeProfile />
+                    <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini</Text>
+                    {/* agar bisa scrol ke samping card piliha dokter maka gunakan SCrollView bawaan
             react-native secara defaul vertical maka aktifkan ketik horizontal seperti 
             dibawah ini,
             lalu agar indikator scrollnya hilang maka matikan gunakan showHorizontalScrollIndicatro ={false}
             */}
-                <View style={styles.wrapperScroll}>
-                    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                        <View style={styles.categori}>
-                            <Gap width={16} />
-                            <DoctorCategori />
-                            <DoctorCategori />
-                            <DoctorCategori />
-                            <DoctorCategori />
-                            <Gap width={6} />
-                        </View>
-                    </ScrollView>
-                </View>
-                <Text style={styles.sectionLabel}>Top Rated Doctor</Text>
-                <RatedDoctor />
-                <RatedDoctor />
-                <RatedDoctor />
-                <Text style={styles.sectionLabel}>Good News</Text>
-                <NewsItem />
-                <NewsItem />
-                <NewsItem />
+                    <View style={styles.wrapperScroll}>
+                        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                            <View style={styles.categori}>
+                                <Gap width={16} />
+                                <DoctorCategori />
+                                <DoctorCategori />
+                                <DoctorCategori />
+                                <DoctorCategori />
+                                <Gap width={6} />
+                            </View>
+                        </ScrollView>
+                    </View>
+                    <Text style={styles.sectionLabel}>Top Rated Doctor</Text>
+                    <RatedDoctor />
+                    <RatedDoctor />
+                    <RatedDoctor />
+                    <Text style={styles.sectionLabel}>Good News</Text>
+                    <NewsItem />
+                    <NewsItem />
+                    <NewsItem />
+                    <Gap height={30}/>
+                </ScrollView>
             </View>
         </View>
     )
@@ -50,12 +55,12 @@ const styles = StyleSheet.create({
     },
     //ini adalah cara untuk membuat lengkungan
     conten: {
-        paddingVertical: 30,
-        paddingHorizontal: 16, 
+        // paddingVertical: 30,
+        paddingHorizontal: 16,
         backgroundColor: colors.white,
         flex: 1,
-        borderBottomLeftRadius:20,
-        borderBottomRightRadius:20
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20
     },
     welcome: {
         fontSize: 20,
@@ -67,12 +72,12 @@ const styles = StyleSheet.create({
     categori: {
         flexDirection: 'row'
     },
-    sectionLabel:{
-        fontSize:16,
-        fontFamily:fonst.primary[600],
-        color:colors.text.primary,
-        marginTop:30,
-        marginBottom:16
+    sectionLabel: {
+        fontSize: 16,
+        fontFamily: fonst.primary[600],
+        color: colors.text.primary,
+        marginTop: 30,
+        marginBottom: 16
     },
     wrapperScroll: { marginHorizontal: -16 }
 })

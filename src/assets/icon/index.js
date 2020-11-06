@@ -7,7 +7,7 @@ import IconMessage from './ic-message.svg';
 import IconMessageActive from './ic-message-active.svg';
 import IconHospital from './ic-map.svg';
 import IconHospitalActive from './ic-map-active.svg';
-
+import IconStart from './star_rate_18px.svg';
 
 
 
@@ -19,5 +19,6 @@ export {
     IconDoctorACtive,
     IconMessage, IconMessageActive,
     IconHospital,
-    IconHospitalActive
+    IconHospitalActive,
+    IconStart
 };
