@@ -2,6 +2,7 @@
 //mainColor adalah kumpulan warna warna
 const mainColor = {
     green1: "#0BcAD4",
+    green2:'#EDFCFD', 
     dark1: '#112340',
     dark2: '#495A75',
     grey1: "#7D8797",
@@ -28,5 +29,6 @@ export const colors = {
             text: mainColor.dark1
         }
     },
-    border: mainColor.grey2
+    border: mainColor.grey2,
+    CardLight: mainColor.green2
 }
