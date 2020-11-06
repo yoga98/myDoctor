@@ -16,10 +16,10 @@ const Doctor = () => {
                         <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini</Text>
                     </View>
                     {/* agar bisa scrol ke samping card piliha dokter maka gunakan SCrollView bawaan
-            react-native secara defaul vertical maka aktifkan ketik horizontal seperti 
-            dibawah ini,
-            lalu agar indikator scrollnya hilang maka matikan gunakan showHorizontalScrollIndicatro ={false}
-            */}
+react-native secara defaul vertical maka aktifkan ketik horizontal seperti 
+dibawah ini,
+lalu agar indikator scrollnya hilang maka matikan gunakan showHorizontalScrollIndicatro ={false}
+*/}
                     <View style={styles.wrapperScroll}>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                             <View style={styles.categori}>
