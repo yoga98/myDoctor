@@ -1,0 +1,5 @@
+folder ilustrasion'
+menyimpan gambar ilustrasi 
+seperti gambar background 
+icon yang umum/statis tidak bisa dirubah/tetap
+yang ber extensi svg dan png

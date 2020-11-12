@@ -5,7 +5,7 @@ import { Button, Gap } from '../../components';
 import { colors, fonst } from '../../utils';
 // import  Gap  from '../../components/atoms/Gap';
 // import  Button from '../../components/atoms/Button/Button';
-
+ 
 
 const GetStarted = ({navigation}) => { 
     return (

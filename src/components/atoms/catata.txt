@@ -1,0 +1,2 @@
+folder atom ini menyimpan bagian componen terkecil seperti button
+dan dibuat lagi folder agar ter organisir

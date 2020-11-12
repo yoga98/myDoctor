@@ -24,3 +24,8 @@ const Tab = createBottomTabNavigator();
 //untuk membuat tab navigator pergi ke dokumentasi navigation React dan cari 
 navigation
     ->CreateBottomNavigator
+
+//perbedaan Image dan ImageBackground
+Image yaitu sebuah spesifik adalah gambar yang bisa dirubah atau di beri style
+
+ImageBackground sebuha pembungkus hampir sama seperti View pada umumnya 

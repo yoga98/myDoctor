@@ -28,7 +28,7 @@ const Button = ({ type, title, onPress,icon }) => {
 export default Button;
 const styles = StyleSheet.create({
     //jika typenya container stylenya ini
-    constainer: type => ({
+    constainer: type => ({ 
         backgroundColor: type === 'secondary' ? colors.button.secondary.background : colors.button.primary.background,
         paddingVertical: 10,
         borderRadius: 10,

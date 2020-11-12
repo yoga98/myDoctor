@@ -4,8 +4,12 @@ import ILNullPhoto from './null-photo.png';
 import ILCatUmum from './ic-doc-umu.svg';
 import ILCatPsikiater from './ic-doc-psiko.svg';
 import ILCatObat from './ic-doct-obat.svg';
+import ILBgHospital from './bgHospital.png'
 export {
-    ILLogo, ILGetStarted, ILNullPhoto,
+    ILBgHospital,
+    ILLogo,
+    ILGetStarted,
+    ILNullPhoto,
     ILCatObat,
     ILCatPsikiater,
     ILCatUmum,

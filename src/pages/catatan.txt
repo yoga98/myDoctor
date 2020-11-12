@@ -1,0 +1,2 @@
+di dalam folder pages ini adalah yang akan berpindah dari 1 ke halaman lain
+menggunakan navigator agar ter organisir dari laman login registrasi 
