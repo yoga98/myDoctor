@@ -6,9 +6,9 @@ import DumyDoctor3 from './doctor3.png';
 import DumyNews1 from './news1.png';
 import DumyNews2 from './news2.png';
 import DumyNews3 from './news3.png';
-import Hospital1 from './Hospital1.png';
-import Hospital2 from './Hospital2.png';
-import Hospital3 from './Hospital3.png'
+import DummyHospital1 from './Hospital1.png';
+import DummyHospital2 from './Hospital2.png';
+import DummyHospital3 from './Hospital3.png'
 export {
     DumyUser,
     DumyDoctor1,
@@ -17,7 +17,7 @@ export {
     DumyNews1,
     DumyNews2,
     DumyNews3,
-    Hospital1,
-    Hospital2,
-    Hospital3,
+    DummyHospital1,
+    DummyHospital2,
+    DummyHospital3,
 }
