@@ -1,16 +1,14 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
-import { color } from 'react-native-reanimated'
-import { DumyDoctor2 } from '../../../assets'
 import { colors, fonst } from '../../../utils'
-
-const ListDoctor = () => {
+//buat propos objek
+const ListDoctor = ({profile,name,desc}) => {
     return (
         <View style={styles.container}>
-            <Image source={DumyDoctor2} style={styles.avatar} />
+            <Image source={profile} style={styles.avatar} />
             <View>
-                <Text style={styles.name}>Alxsanderia </Text>
-                <Text style={styles.desc}>Baik ibu, terima kasih atas waktu luang </Text>
+                <Text style={styles.name}>{name} </Text>
+                <Text style={styles.desc}>{desc}</Text>
             </View>
         </View>
     )

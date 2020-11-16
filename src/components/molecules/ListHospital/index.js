@@ -1,17 +1,20 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
-import { DummyHospital1 } from '../../../assets'
 import { colors, fonst } from '../../../utils'
 
-const ListHospital = () => {
+//Pemanggilan menggunakan props objek 
+//menggunakan konsep destructuring props sama seperti di page lainnya 
+//yang menggunkaan props objek
+//ini akan muncul di Hospital
+const ListHospital = ({type,name,address,pic}) => {
     return (
         <View style={styles.container}>
-            <Image source={DummyHospital1} style={styles.picture} />
+            <Image source={pic} style={styles.picture} />
             {/* agar sejajar teks maka dibungkus kembali oleh View */}
             <View>
-                <Text style={styles.title}>Rumah Sakit</Text>
-                <Text style={styles.title}>Citra Bunga Merdeka</Text>
-                <Text style={styles.addres}>Jln. Surya Sejahtera 20</Text>
+                <Text style={styles.title}>{type}</Text>
+                <Text style={styles.title}>{name}</Text>
+                <Text style={styles.addres}>{address}</Text>
             </View>
         </View>
     )

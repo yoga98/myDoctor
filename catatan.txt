@@ -28,4 +28,7 @@ navigation
 //perbedaan Image dan ImageBackground
 Image yaitu sebuah spesifik adalah gambar yang bisa dirubah atau di beri style
 
-ImageBackground sebuha pembungkus hampir sama seperti View pada umumnya 
+ImageBackground sebuha pembungkus hampir sama seperti View pada umumnya ,
+
+//Data Inline
+d
