@@ -30,5 +30,5 @@ Image yaitu sebuah spesifik adalah gambar yang bisa dirubah atau di beri style
 
 ImageBackground sebuha pembungkus hampir sama seperti View pada umumnya ,
 
-//Data Inline
-d
+//Data JSON,Inline,State
+biasanya di siapkan untuk data firebase nantinya

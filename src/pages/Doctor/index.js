@@ -1,5 +1,6 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { JSONCategoriDoc } from '../../assets'
 import { DoctorCategori, Gap, HomeProfile, NewsItem, RatedDoctor } from '../../components'
 import { colors, fonst } from '../../utils'
 
@@ -24,10 +25,13 @@ lalu agar indikator scrollnya hilang maka matikan gunakan showHorizontalScrollIn
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                             <View style={styles.categori}>
                                 <Gap width={32} />
-                                <DoctorCategori />
-                                <DoctorCategori />
-                                <DoctorCategori />
-                                <DoctorCategori />
+                            {/* pangginl Json data 
+                        JSONCategoriDoc.data artinya json memanggil data yg ada di dalam objek 1,2 yg di kasih nama item(optional) */}
+                                {
+                                    JSONCategoriDoc.data.map(item => {
+                                        return <DoctorCategori key={item.id} categori={item.categori} />
+                                    })
+                                }
                                 <Gap width={22} />
                             </View>
                         </ScrollView>

@@ -1,0 +1,24 @@
+{
+    "data":[
+        {
+        "id":1,
+        "categori":"dokter umum"
+    },
+    {
+        "id":2,
+        "categori":"psikiater"
+    },
+    {
+        "id":3,
+        "categori":"dokter obat"
+    },
+    {
+        "id":4,
+        "categori":"dokter umum"
+    },
+    {
+        "id":5,
+        "categori":"dokter obat"
+    }
+]
+}
