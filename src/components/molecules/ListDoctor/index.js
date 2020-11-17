@@ -1,12 +1,12 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { IconNext } from '../../../assets'
 import { colors, fonst } from '../../../utils'
 //buat propos objek
 //kondisi type yang muncul ketika pilih dokter ada tombol next atau tidak
-const ListDoctor = ({profile,name,desc,type}) => {
+const ListDoctor = ({profile,name,desc,type,onPrees}) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPrees} >
             <Image source={profile} style={styles.avatar} />
             <View style={styles.wrapper}>
                 <Text style={styles.name}>{name} </Text>
@@ -15,7 +15,7 @@ const ListDoctor = ({profile,name,desc,type}) => {
             {
                 type === 'next' && <IconNext/>
             }
-        </View>
+        </TouchableOpacity>
     )
 }
 
