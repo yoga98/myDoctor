@@ -1,15 +1,20 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
+import { IconNext } from '../../../assets'
 import { colors, fonst } from '../../../utils'
 //buat propos objek
-const ListDoctor = ({profile,name,desc}) => {
+//kondisi type yang muncul ketika pilih dokter ada tombol next atau tidak
+const ListDoctor = ({profile,name,desc,type}) => {
     return (
         <View style={styles.container}>
             <Image source={profile} style={styles.avatar} />
-            <View>
+            <View style={styles.wrapper}>
                 <Text style={styles.name}>{name} </Text>
                 <Text style={styles.desc}>{desc}</Text>
             </View>
+            {
+                type === 'next' && <IconNext/>
+            }
         </View>
     )
 }
@@ -23,12 +28,14 @@ const styles = StyleSheet.create({
         marginRight: 12,
        
     },
+    wrapper:{flex:1},
     container: {
         flexDirection: 'row',
         padding: 16,
         borderBottomWidth: 1,
         borderBottomColor: colors.border,
-        alignItems:'center'
+        alignItems:'center',
+        justifyContent:'space-between'
     },
     name: {
         fontSize: 16,

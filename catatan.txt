@@ -32,3 +32,10 @@ ImageBackground sebuha pembungkus hampir sama seperti View pada umumnya ,
 
 //Data JSON,Inline,State
 biasanya di siapkan untuk data firebase nantinya
+
+//card button yang bisa di tekan 
+berada di React navigation 
+cari guides
+hiding tab bar in specialis screen 
+
+//caranya buat di router Choose Doctor lalu buat page Choose Doctor

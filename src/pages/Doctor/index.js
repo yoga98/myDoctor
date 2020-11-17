@@ -5,7 +5,7 @@ import { DoctorCategori, Gap, HomeProfile, NewsItem, RatedDoctor } from '../../c
 import { colors, fonst } from '../../utils'
 
 
-const Doctor = () => {
+const Doctor = ({ navigation }) => {
     return (
         <View style={styles.page}>
             <View style={styles.conten}>
@@ -25,11 +25,12 @@ lalu agar indikator scrollnya hilang maka matikan gunakan showHorizontalScrollIn
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                             <View style={styles.categori}>
                                 <Gap width={32} />
-                            {/* pangginl Json data 
+                                {/* pangginl Json data 
                         JSONCategoriDoc.data artinya json memanggil data yg ada di dalam objek 1,2 yg di kasih nama item(optional) */}
                                 {
                                     JSONCategoriDoc.data.map(item => {
-                                        return <DoctorCategori key={item.id} categori={item.categori} />
+                                        return <DoctorCategori key={item.id} categori={item.categori}
+                                            onPress={() => navigation.navigate('ChooseDoctor')} />
                                     })
                                 }
                                 <Gap width={22} />

@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { IconDarkBack } from '../../../assets'
+import { IconDarkBack, IconLightkBack } from '../../../assets'
 //iconOnly ini akan muncul di Index Button
 //dan akan menerima parameter onPress dan icon (icon primary/secondary)
 const IconOnly = ({ onPress, icon }) => {
@@ -10,7 +10,7 @@ const IconOnly = ({ onPress, icon }) => {
             return (<IconDarkBack />)
         }
         if (icon === 'back-light') {
-            return (<IconDarkBack />)
+            return (<IconLightkBack />)
         }
         return <IconDarkBack />
     };
