@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fonst } from '../../../utils';
 import { Button, Gap } from '../../atoms';
+import DarkProfile from './DarkProfile';
 //memanggil onPress
 //artinya button icon back-dark menjadi event press kembalidarokomponen yang dipunya
 //membuat props title agar dinams 
@@ -9,6 +10,10 @@ import { Button, Gap } from '../../atoms';
 //type akan menjadi parameter untuk merubah kondisi sebuat tampilan/
 //pada button buat kondisi sama masukan parameter type 
 const Header = ({ onPress, title, type }) => {
+    // kondisi agar lebih dinamis
+    if(type === 'dark-profile'){
+        return <DarkProfile/>
+    }
     return (
         <View style={styles.container(type)}>
             <Button type="icon-only" icon={type === 'dark' ? 'back-light' : 'back-dark'} onPress={onPress} />
