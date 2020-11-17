@@ -1,14 +1,16 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import IsMe from './IsMe';
+import Other from './Other';
 
-const ChattItem = () => {
-    return (
-        <View>
-            <Text>Chatt Item Compiinen</Text>
-        </View>
-    )
+// disini logika chat bila isMe(dari saya) dan other (oranglain/dokter)
+//jika ada props di Chatting isme maka tampilan isme
+//jika bukan other
+const ChattItem = ({ isMe }) => {
+    if (isMe) {
+        return <IsMe />
+    }
+    return <Other />
 }
 
-export default ChattItem
+export default ChattItem;
 
-const styles = StyleSheet.create({})

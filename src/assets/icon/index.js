@@ -10,10 +10,14 @@ import IconHospital from './ic-map.svg';
 import IconHospitalActive from './ic-map-active.svg';
 import IconStart from './star_rate_18px.svg';
 import IconNext from './ic-send.svg';
+import IconSendLight from './ic-send-act.svg';
+import IconSendDark from './ic-send-disable.svg'
 
 
 
 export {
+    IconSendLight,
+    IconSendDark,
     IconDarkBack,
     IconLightkBack,
     IconAddPhoto,
