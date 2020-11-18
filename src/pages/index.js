@@ -9,7 +9,9 @@ import Hospital from './Hospital';
 import ChooseDoctor from './ChooseDoctor';
 import Chatting from './Chatting';
 import UserProfile from './UserProfile';
+import UpdateProfile from './UpdateProfile';
 export {
+    UpdateProfile,
     UserProfile,
     Splash,
     GetStarted,

@@ -1,16 +1,22 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
-import { DumyUser } from '../../../assets'
+import { DumyUser, IconRemovePhoto } from '../../../assets'
 import { colors, fonst } from '../../../utils'
-
-const index = () => {
+//*buat props name dan desc
+const index = ({ name, desc }) => {
     return (
         <View style={styles.container}>
             <View style={styles.borderProfile}>
                 <Image source={DumyUser} style={styles.avatar} />
+                <IconRemovePhoto style={styles.RemovePhoto}/>
             </View>
-            <Text style={styles.name}>Sahyana Putri</Text>
-            <Text style={styles.profession}>Product Desainer</Text>
+            {/* Logic agar ketika tidak ada nama akan kosong dan tidak ada space */}
+            { name && (
+                <View>
+                    <Text style={styles.name}>{name}</Text>
+                    <Text style={styles.profession}>{desc}</Text>
+                </View>
+            )}
         </View>
     )
 }
@@ -27,7 +33,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: colors.border,
         justifyContent: 'center',
-        alignItems:"center"
+        alignItems: "center"
     },
     name: {
         fontFamily: fonst.primary[600],
@@ -40,5 +46,6 @@ const styles = StyleSheet.create({
         fontFamily: fonst.primary[600],
         color: colors.text.secondary,
         marginTop: 2
-    }
+    },
+    RemovePhoto:{position:"absolute",right:8,bottom:8}
 })
