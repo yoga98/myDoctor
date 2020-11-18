@@ -5,9 +5,9 @@ const index = ({navigation}) => {
     //jika list sudah terpanggil dan tidak nampak cek di componen molecus apa saja atribut props yang harus dimiliki
     return (
         <View style={styles.page}>
-            <Header title="Profile"/>
+            <Header title="Profile" onPress={()=> navigation.goBack()}/>
             <Gap height={10}/>
-            <Profile/>
+            <Profile name="Shayta Alexa" desc="Product Deasiner"/>
             <Gap height={14}/>
             <List desc="Last Update yesterday" type="next" name="Edit Profile" icon="edit-profile" onPrees={ () => navigation.navigate('UpdateProfile')} />
             <List desc="Last Update yesterday" type="next" name="Edit Profile" icon="language"/>

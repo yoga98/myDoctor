@@ -7,7 +7,7 @@ import { colors, fonst } from '../../utils'
 //useState di import dari react
 //menggunakan State hooks fungsional component
 //menggunakan metode useState
-const Message = () => {
+const Message = ({navigation}) => {
     // Mendeskripsikan menjadi Doctor
     //jika kata pertama docktor maka setDoctor
     //atau jika pertama use maka setuser
@@ -49,7 +49,9 @@ const Message = () => {
                             key={doctor.id}
                             profile={doctor.profile}
                             name={doctor.name}
-                            desc={doctor.desc} />
+                            desc={doctor.desc} 
+                            onPrees={()=>navigation.navigate('Chatting')}
+                            />
                     })
                 }
             </View>
