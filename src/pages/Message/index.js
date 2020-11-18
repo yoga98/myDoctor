@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { DumyDoctor1, DumyDoctor2, DumyDoctor3 } from '../../assets'
-import { ListDoctor } from '../../components'
+import { List } from '../../components'
 import { colors, fonst } from '../../utils'
 
 //useState di import dari react
@@ -45,7 +45,7 @@ const Message = () => {
                 */}
                 {
                     doctors.map(doctor => {
-                        return <ListDoctor
+                        return <List
                             key={doctor.id}
                             profile={doctor.profile}
                             name={doctor.name}

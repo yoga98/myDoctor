@@ -12,7 +12,10 @@ import IconStart from './star_rate_18px.svg';
 import IconNext from './ic-send.svg';
 import IconSendLight from './ic-send-act.svg';
 import IconSendDark from './ic-send-disable.svg'
-
+import IconEditProfile from './ic-edit-profile.svg';
+import IconLanguage from './ic-langue.svg';
+import IconRate from './ic-rate.svg';
+import IconHelp from './ic-help.svg';
 
 
 export {
@@ -28,5 +31,9 @@ export {
     IconHospital,
     IconHospitalActive,
     IconStart,
-    IconNext
+    IconNext,
+    IconEditProfile,
+    IconLanguage,
+    IconRate,
+    IconHelp,
 };

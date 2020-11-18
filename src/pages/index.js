@@ -8,8 +8,9 @@ import Message from './Message';
 import Hospital from './Hospital';
 import ChooseDoctor from './ChooseDoctor';
 import Chatting from './Chatting';
-
+import UserProfile from './UserProfile';
 export {
+    UserProfile,
     Splash,
     GetStarted,
     Register,

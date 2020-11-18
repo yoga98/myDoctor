@@ -13,7 +13,7 @@ const Doctor = ({ navigation }) => {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.wrapperSection}>
                         <Gap height={30} />
-                        <HomeProfile />
+                        <HomeProfile onPress={()=> navigation.navigate('UserProfile')} />
                         <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini</Text>
                     </View>
                     {/* agar bisa scrol ke samping card piliha dokter maka gunakan SCrollView bawaan

@@ -5,11 +5,13 @@ import HomeProfile from './HomeProfile';
 import DoctorCategori from './DoctorCategori';
 import RatedDoctor from './RatedDoctor';
 import NewsItem from './NewsItem';
-import ListDoctor from './ListDoctor';
+import List from './List';
 import ListHospital from './ListHospital';
 import ChattItem from './ChattItem';
-import InputChat from './InputChat'
+import InputChat from './InputChat';
+import Profile from './Profile';
 export {
+    Profile,
     ChattItem,
     InputChat,
     Header,
@@ -18,6 +20,6 @@ export {
     DoctorCategori,
     RatedDoctor,
     NewsItem,
-    ListDoctor,
+    List,
     ListHospital
 }
