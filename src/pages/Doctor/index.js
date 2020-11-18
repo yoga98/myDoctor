@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import { JSONCategoriDoc } from '../../assets'
+import { DumyDoctor1,DumyDoctor2,DumyDoctor3, JSONCategoriDoc } from '../../assets'
 import { DoctorCategori, Gap, HomeProfile, NewsItem, RatedDoctor } from '../../components'
 import { colors, fonst } from '../../utils'
 
@@ -39,9 +39,9 @@ lalu agar indikator scrollnya hilang maka matikan gunakan showHorizontalScrollIn
                     </View>
                     <View style={styles.wrapperSection}>
                         <Text style={styles.sectionLabel}>Top Rated Doctor</Text>
-                        <RatedDoctor />
-                        <RatedDoctor />
-                        <RatedDoctor />
+                        <RatedDoctor avatar={DumyDoctor1} name="Alexa Srinda" desc="Dokter Anak" onPress={()=>navigation.navigate('DoctorProfile')}/>
+                        <RatedDoctor avatar={DumyDoctor2} name="Husabah" desc="Dokter Psikiater" onPress={()=>navigation.navigate('DoctorProfile')} />
+                        <RatedDoctor avatar={DumyDoctor3} name="Barbara" desc="Dokter Anak" onPress={()=>navigation.navigate('DoctorProfile')} />
                         <Text style={styles.sectionLabel}>Good News</Text>
                     </View>
                     <NewsItem />

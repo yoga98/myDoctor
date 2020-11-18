@@ -10,7 +10,9 @@ import ListHospital from './ListHospital';
 import ChattItem from './ChattItem';
 import InputChat from './InputChat';
 import Profile from './Profile';
-export {
+import ProfileItem from './ProfileItem'
+;export {
+    ProfileItem,
     Profile,
     ChattItem,
     InputChat,

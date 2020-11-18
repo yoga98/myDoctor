@@ -8,7 +8,7 @@ const index = ({ name, desc }) => {
         <View style={styles.container}>
             <View style={styles.borderProfile}>
                 <Image source={DumyUser} style={styles.avatar} />
-                <IconRemovePhoto style={styles.RemovePhoto}/>
+                <IconRemovePhoto style={styles.RemovePhoto} />
             </View>
             {/* Logic agar ketika tidak ada nama akan kosong dan tidak ada space */}
             { name && (
@@ -39,13 +39,16 @@ const styles = StyleSheet.create({
         fontFamily: fonst.primary[600],
         fontSize: 20,
         color: colors.text.primary,
-        marginTop: 16
+        marginTop: 16,
+        textAlign: "center"
     },
     profession: {
         fontSize: 16,
         fontFamily: fonst.primary[600],
         color: colors.text.secondary,
         marginTop: 2
+
+        , textAlign: "center"
     },
-    RemovePhoto:{position:"absolute",right:8,bottom:8}
+    RemovePhoto: { position: "absolute", right: 8, bottom: 8 }
 })
