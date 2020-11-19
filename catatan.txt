@@ -41,3 +41,9 @@ hiding tab bar in specialis screen
 //caranya buat di router Choose Doctor lalu buat page Choose Doctor
 //jika sudah melakukan pemanggilan navigation dan onPress ={()=>navigation.Navigate('file dituju')} tapi
 tidak dapat di akses atau erro coba cek di router sudah di panggil apa belum
+
+//Proses integrasi 
+database memnggunakan Firebase dan menggunakan teknik NoSQL
+
+//useState
+untuk memanggil useState harus di import dari React
