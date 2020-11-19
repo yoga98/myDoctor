@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { Value } from 'react-native-reanimated';
 import { colors, fonst } from '../../../utils';
-//label adalah bagian dari prop yang di munculkan di halaman login
-//untuk memanggil useState harus di import dari React
-const Input = ({ label }) => {
-    // buat useState yang di beri nama border, dan setBorder yg mengsilkan useState colors.border
+//*label adalah bagian dari prop yang di munculkan di halaman login
+//*untuk memanggil useState harus di import dari React
+//membuat props value dan onChangeText untuk menerima masukan pada inputan
+const Input = ({ label, value, onChangeText,secureTextEntry}) => {
+    //* buat useState yang di beri nama border, dan setBorder yg mengsilkan useState colors.border
     const [border, setBorder] = useState(colors.border);
-    // panggil Props onFocus yang isinya dibawah in
+    //* panggil Props onFocus yang isinya dibawah in
     const onFocusForm = () => {
         setBorder(colors.tertiary);
     };
@@ -19,7 +21,11 @@ const Input = ({ label }) => {
             <TextInput
                 onFocus={onFocusForm}
                 onBlur={onBlurForm}
-                style={styles.input(border)} />
+                style={styles.input(border)}
+                value={value}
+                onChangeText={onChangeText}
+                secureTextEntry={secureTextEntry}
+            />
         </View>
     )
 }
