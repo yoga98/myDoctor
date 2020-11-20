@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Gap, Header, Input } from '../../components';
-import { colors } from '../../utils';
+import { colors, useForm } from '../../utils';
 //untuk membuat valeu kosong dan akan berisi maka menggunakan useState
 //diberi string kosong karena di awal form tampa isi
 
 
 const Register = ({ navigation }) => {
-    const [fullname, setFullName] = useState('');
-    const [profesional, setProfesional] = useState('')
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
+    // const [fullname, setFullName] = useState('');
+    // const [profesional, setProfesional] = useState('')
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('')
+
+    //panggil useState yg sudah dibuat
+    //jadi hanya buat satu useState tidak perlu membuat banyak seperti contoh di atas
+    const [form, setForm] = useForm({
+        fullname: '',
+        profesional: '',
+        email: '',
+        password: '',
+    });
+
+
 
     // Buat fungsi untuk melakukan pengecekan
     const onContinue = () => {
-        console.log('Masuk ke fungsi ')
+        console.log(form)
         //navigation.navigate('UploadPhoto')
     }
     return (
@@ -30,21 +41,22 @@ const Register = ({ navigation }) => {
 
                 */}
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <Input value={fullname}
+                    <Input
+                        value={form.fullName}
                         label="Full Name"
-                        onChangeText={(value) => setFullName(value)} />
+                        onChangeText={value => setForm('fullName',value)} />
                     <Gap height={24} />
-                    <Input value={profesional}
+                    <Input value={form.profesional}
                         label="Pekerjaan"
-                        onChangeText={(value) => setProfesional(value)} />
+                        onChangeText={value => setForm('profesional',value)} />
                     <Gap height={24} />
-                    <Input value={email}
+                    <Input value={form.email}   
                         label="Email"
-                        onChangeText={(value) => setEmail(value)} />
+                        onChangeText={(value) => setForm('email',value)} />    
                     <Gap height={24} />
-                    <Input value={password}
+                    <Input value={form.password}
                         label="Password"
-                        onChangeText={(value) => setPassword(value)}
+                        onChangeText={(value) => setForm('password',value)}
                         secureTextEntry />
                     <Gap height={40} />
                     {/* Naviget untuk berpindah halaman yang dituju */}

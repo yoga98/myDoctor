@@ -47,3 +47,6 @@ database memnggunakan Firebase dan menggunakan teknik NoSQL
 
 //useState
 untuk memanggil useState harus di import dari React
+
+//useForm di folder utils karena bisa di gunakan dimana saja
+fungsi yang dibuat untuk mengoptimalkan useState
