@@ -50,3 +50,10 @@ untuk memanggil useState harus di import dari React
 
 //useForm di folder utils karena bisa di gunakan dimana saja
 fungsi yang dibuat untuk mengoptimalkan useState
+
+//install firebase
+buka www.firebase.com 
+lalu buat projek dan mulai 
+buat folder config di asset dan buat folder di dlmnya Fire
+install dalam projek npx add firebase
+lalu jalankan ulang dan install ulang apk
