@@ -64,3 +64,8 @@ lalu jalankan ulang dan install ulang apk
 3. buka dokumentasi
 4. pilih web 
 5. caro authention sandi
+
+//cara menyinmpan data di database firebase realtime
+1. pilih realtime databse 
+2. buat database
+3. pilih mode uji coba terlebih dahulu

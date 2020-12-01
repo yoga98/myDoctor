@@ -1,26 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
-import { IconAddPhoto, ILNullPhoto } from '../../assets'
+import { IconAddPhoto, IconRemovePhoto, ILNullPhoto } from '../../assets'
 import { Button, Gap, Header, Link } from '../../components'
 import { colors, fonst } from '../../utils'
 //pemanggilan image menggunakan objek bawaan react-native
-const UploadPhoto = ({navigation}) => {
-    return ( 
+const UploadPhoto = ({ navigation }) => {
+    const [hasPhoto, setHasPhoto] = useState(false)
+    return (
         <View style={styles.page}>
-            <Header title="Upload Photo" onPress={()=> navigation.goBack()} />
+            <Header title="Upload Photo" onPress={() => navigation.goBack()} />
             <View style={styles.content}>
                 <View style={styles.profile}>
                     <View style={styles.avatarWallpaper}>
                         <Image source={ILNullPhoto} style={styles.avatar} />
-                        <IconAddPhoto style={styles.addPhoto} />
+                        {hasPhoto && <IconRemovePhoto style={styles.addPhoto} />}
+                        {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
+
                     </View>
                     <Text style={styles.name}>Shayna Melinda</Text>
                     <Text style={styles.profesiosnal}>Product Desainer</Text>
                 </View>
                 <View>
-                    <Button title="Upload and Continue" onPress={()=>navigation.replace('MainApp')} />
-                    <Gap height={30}/>
-                    <Link title="Skip for this"  align="center" size={16} onPress={()=>navigation.replace('MainApp')}/>
+                    <Button
+                        disable
+                        title="Upload and Continue"
+                        onPress={() => navigation.replace('MainApp')}
+                    />
+                    <Gap height={30} />
+                    <Link title="Skip for this" align="center" size={16} onPress={() => navigation.replace('MainApp')} />
                 </View>
             </View>
         </View>
@@ -36,14 +43,14 @@ const styles = StyleSheet.create({
     },
     content: {
         paddingHorizontal: 40,
-        paddingBottom:64,
+        paddingBottom: 64,
         flex: 1,
         justifyContent: "space-between"
     },
-    profile:{
-        flex:1,
-        alignItems:"center",
-        justifyContent:"center"
+    profile: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
     },
     avatar: {
         height: 110,
