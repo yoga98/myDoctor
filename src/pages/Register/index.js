@@ -40,6 +40,18 @@ const Register = ({ navigation }) => {
             .then((succes) => {
                 setLoading(false);
                 setForm('reset');
+                // tahapan menyinpan data
+                const data={
+                    fullName:form.fullName,
+                    profesional:form.profesional,
+                    email:form.email,
+                }
+                
+                Fire
+                .database()
+                .ref('users/' +succes.user.uid+'/') //panggil fungsi database
+                .set(data);
+
                 console.log('succes registrasi :', succes)
             })
             .catch((error) => {
