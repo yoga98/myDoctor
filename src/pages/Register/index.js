@@ -25,10 +25,6 @@ const Register = ({ navigation }) => {
     //buat useState loading aktif/tidak
     const [loading,setLoading] =useState(false)
 
-
-
-
-
     // Buat fungsi untuk melakukan pengecekan
     const onContinue = () => {
         console.log(form);
@@ -39,6 +35,7 @@ const Register = ({ navigation }) => {
             .createUserWithEmailAndPassword(form.email, form.password)
             .then((succes) => {
                 setLoading(false);
+                setForm('reset');
                 console.log('succes registrasi :', succes)
             })
             .catch((error) => {

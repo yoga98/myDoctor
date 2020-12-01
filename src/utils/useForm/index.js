@@ -8,8 +8,11 @@ export const useForm = (initialValue) => {
 
     // ...values artinya ganti param lama lalu ganti dengan param baru 
     //di atur secara dinamis menggunakan type
-
+    //jika typenya reset maka kosongkan form
     return [values, (formType, formValue) => {
+        if (formType === 'reset') {
+            return setValues(initialValue);
+        }
 
         return setValues({ ...values, [formType]: formValue })
     }]
