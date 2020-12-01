@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Gap, Header, Input, Loading } from '../../components';
 import { colors, useForm } from '../../utils';
-import {Fire} from '../../config'
+import {Fire} from '../../config';
+import { showMessage, hideMessage } from "react-native-flash-message";
+import { color } from 'react-native-reanimated';
+
 //untuk membuat valeu kosong dan akan berisi maka menggunakan useState
 //diberi string kosong karena di awal form tampa isi
 
@@ -28,9 +31,10 @@ const Register = ({ navigation }) => {
     // Buat fungsi untuk melakukan pengecekan
     const onContinue = () => {
         console.log(form);
+       
         setLoading(true);
-        //nama Fire ini di buat di src config
-        //kita ambil fungsi firebase yang berada di configurasi
+        // nama Fire ini di buat di src config
+        // kita ambil fungsi firebase yang berada di configurasi
         Fire.auth()
             .createUserWithEmailAndPassword(form.email, form.password)
             .then((succes) => {
@@ -40,10 +44,16 @@ const Register = ({ navigation }) => {
             })
             .catch((error) => {
                 // dibuat arrow Funtion.
-                // var errorCode = error.code;
                 const errorMessage = error.message;
                 setLoading(false);
-                console.log('error register :', errorMessage)
+                showMessage({
+                    message:errorMessage,
+                    type:'default',
+                    backgroundColor:colors.error,
+                    color:colors.white,
+                    
+                });
+                // console.log('error register :', errorMessage)
              });
     }
     return (

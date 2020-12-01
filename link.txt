@@ -1,0 +1,4 @@
+react-native-flash-message ( untuk membuat pesan error dengan cepat dan dinamis)
+npm install --save react-native-flash-message
+dan ini di simpan di app.js
+import FlashMessage from "react-native-flash-message";
