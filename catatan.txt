@@ -57,3 +57,10 @@ lalu buat projek dan mulai
 buat folder config di asset dan buat folder di dlmnya Fire
 install dalam projek npx add firebase
 lalu jalankan ulang dan install ulang apk
+
+//cara Registrasi firebase
+1.pilih authention 
+2. di penyedia pilih email/sandi aktifkan
+3. buka dokumentasi
+4. pilih web 
+5. caro authention sandi

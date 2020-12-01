@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Button, Gap, Header, Input } from '../../components';
+import { Button, Gap, Header, Input, Loading } from '../../components';
 import { colors, useForm } from '../../utils';
+import {Fire} from '../../config'
 //untuk membuat valeu kosong dan akan berisi maka menggunakan useState
 //diberi string kosong karena di awal form tampa isi
 
@@ -21,20 +22,41 @@ const Register = ({ navigation }) => {
         password: '',
     });
 
+    //buat useState loading aktif/tidak
+    const [loading,setLoading] =useState(false)
+
+
+
 
 
     // Buat fungsi untuk melakukan pengecekan
     const onContinue = () => {
-        console.log(form)
-        //navigation.navigate('UploadPhoto')
+        console.log(form);
+        setLoading(true);
+        //nama Fire ini di buat di src config
+        //kita ambil fungsi firebase yang berada di configurasi
+        Fire.auth()
+            .createUserWithEmailAndPassword(form.email, form.password)
+            .then((succes) => {
+                setLoading(false);
+                console.log('succes registrasi :', succes)
+            })
+            .catch((error) => {
+                // dibuat arrow Funtion.
+                // var errorCode = error.code;
+                const errorMessage = error.message;
+                setLoading(false);
+                console.log('error register :', errorMessage)
+             });
     }
     return (
+        <>
         <View style={styles.page}>
             {/* artinya navigation.goBack ketika di
             klik maka fungisnya akan kembali ke halaman sebelumnya
              */}
             <Header onPress={() => navigation.goBack()} title="Daftar Akun" />
-            <View style={styles.content}>
+            <View style={styles.content}>   
                 {/*  
                 props value berasa dari component Input, lalu isi dari value tersbut di ambil dari useState di atas,
                 agar ketika di ketika tidak berubah maka gunakan onChangetext yang berasal dari inputan
@@ -44,19 +66,19 @@ const Register = ({ navigation }) => {
                     <Input
                         value={form.fullName}
                         label="Full Name"
-                        onChangeText={value => setForm('fullName',value)} />
+                        onChangeText={value => setForm('fullName', value)} />
                     <Gap height={24} />
                     <Input value={form.profesional}
                         label="Pekerjaan"
-                        onChangeText={value => setForm('profesional',value)} />
+                        onChangeText={value => setForm('profesional', value)} />
                     <Gap height={24} />
-                    <Input value={form.email}   
+                    <Input value={form.email}
                         label="Email"
-                        onChangeText={(value) => setForm('email',value)} />    
+                        onChangeText={(value) => setForm('email', value)} />
                     <Gap height={24} />
                     <Input value={form.password}
                         label="Password"
-                        onChangeText={(value) => setForm('password',value)}
+                        onChangeText={(value) => setForm('password', value)}
                         secureTextEntry />
                     <Gap height={40} />
                     {/* Naviget untuk berpindah halaman yang dituju */}
@@ -64,6 +86,10 @@ const Register = ({ navigation }) => {
                 </ScrollView>
             </View>
         </View>
+        {/* tampilan loading jika true */}
+        {loading &&  <Loading/> }
+        {/* ini adalah fragmen <> awal dan ini </> akhir */}
+        </>
     )
 }
 
