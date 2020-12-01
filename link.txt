@@ -1,4 +1,11 @@
-react-native-flash-message ( untuk membuat pesan error dengan cepat dan dinamis)
+1.react-native-flash-message ( untuk membuat pesan error dengan cepat dan dinamis)
 npm install --save react-native-flash-message
 dan ini di simpan di app.js
 import FlashMessage from "react-native-flash-message";
+
+2.https://www.npmjs.com/package/react-native-image-picker (untuk memanggil galery di handphone kita)
+ npm  add react-native-image-picker
+ lalu cari kalimat ini dan klik (You will also need to add UsageDescription on iOS and some permissions on Android, refer to the Install doc.)
+ lalu copy di android/app/src/main/androidMaifest.xml setelah internet
+     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>

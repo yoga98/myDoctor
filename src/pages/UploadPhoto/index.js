@@ -1,28 +1,41 @@
 import React, { useState } from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, ImagePickerIOS, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { IconAddPhoto, IconRemovePhoto, ILNullPhoto } from '../../assets'
 import { Button, Gap, Header, Link } from '../../components'
 import { colors, fonst } from '../../utils'
+import ImagePicker from 'react-native-image-picker'; 
 //pemanggilan image menggunakan objek bawaan react-native
 const UploadPhoto = ({ navigation }) => {
     const [hasPhoto, setHasPhoto] = useState(false)
+    const [photo,setPhoto] = useState(ILNullPhoto)
+
+    //buat fungsi panggil image library
+    const getImage= () =>{
+        ImagePicker.launchImageLibrary({},(response)=>{
+        //same code as in above section
+        console.log('response:', response)
+        const source = {uri:response.uri}; //memanggil source baru dari sebuah uri yang diman dari library kita sendiri
+        setPhoto(source);
+        setHasPhoto(true);
+        });
+    }
     return (
         <View style={styles.page}>
             <Header title="Upload Photo" onPress={() => navigation.goBack()} />
             <View style={styles.content}>
                 <View style={styles.profile}>
-                    <View style={styles.avatarWallpaper}>
-                        <Image source={ILNullPhoto} style={styles.avatar} />
+                    <TouchableOpacity style={styles.avatarWallpaper} onPress={getImage}>
+                        <Image source={photo} style={styles.avatar} />
                         {hasPhoto && <IconRemovePhoto style={styles.addPhoto} />}
                         {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
 
-                    </View>
+                    </TouchableOpacity>
                     <Text style={styles.name}>Shayna Melinda</Text>
                     <Text style={styles.profesiosnal}>Product Desainer</Text>
                 </View>
                 <View>
                     <Button
-                        disable
+                        disable={!hasPhoto}
                         title="Upload and Continue"
                         onPress={() => navigation.replace('MainApp')}
                     />
@@ -54,7 +67,8 @@ const styles = StyleSheet.create({
     },
     avatar: {
         height: 110,
-        width: 110
+        width: 110,
+        borderRadius:110 /2
     },
     avatarWallpaper: {
         height: 130,
