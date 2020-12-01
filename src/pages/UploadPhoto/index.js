@@ -3,20 +3,31 @@ import { Image, ImagePickerIOS, StyleSheet, Text, TouchableOpacity, View } from 
 import { IconAddPhoto, IconRemovePhoto, ILNullPhoto } from '../../assets'
 import { Button, Gap, Header, Link } from '../../components'
 import { colors, fonst } from '../../utils'
-import ImagePicker from 'react-native-image-picker'; 
+import ImagePicker from 'react-native-image-picker';
+import { showMessage } from 'react-native-flash-message'
 //pemanggilan image menggunakan objek bawaan react-native
 const UploadPhoto = ({ navigation }) => {
     const [hasPhoto, setHasPhoto] = useState(false)
-    const [photo,setPhoto] = useState(ILNullPhoto)
+    const [photo, setPhoto] = useState(ILNullPhoto)
 
     //buat fungsi panggil image library
-    const getImage= () =>{
-        ImagePicker.launchImageLibrary({},(response)=>{
-        //same code as in above section
-        console.log('response:', response)
-        const source = {uri:response.uri}; //memanggil source baru dari sebuah uri yang diman dari library kita sendiri
-        setPhoto(source);
-        setHasPhoto(true);
+    const getImage = () => {
+        ImagePicker.launchImageLibrary({}, (response) => {
+            //same code as in above section
+            console.log('response:', response);
+            //jika tidak jadi upload
+            if (response.didCancel || response.error) {
+                showMessage({
+                    message: 'Oops,Sepertinya anda tidak memilih Photonya?',
+                    type: 'default',
+                    backgroundColor: colors.error,
+                    color: colors.white
+                });
+            } else {
+                const source = { uri: response.uri }; //memanggil source baru dari sebuah uri yang diman dari library kita sendiri
+                setPhoto(source);
+                setHasPhoto(true);
+            }
         });
     }
     return (
@@ -68,7 +79,7 @@ const styles = StyleSheet.create({
     avatar: {
         height: 110,
         width: 110,
-        borderRadius:110 /2
+        borderRadius: 110 / 2
     },
     avatarWallpaper: {
         height: 130,

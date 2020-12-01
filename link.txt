@@ -9,3 +9,7 @@ import FlashMessage from "react-native-flash-message";
  lalu copy di android/app/src/main/androidMaifest.xml setelah internet
      <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+lalu setelah itu kembali ke laman upload photo dan tambahkan
+ImagePicker.launchImageLibrary({},(response)=>{
+    isi dari useState
+}
