@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Image, ImagePickerIOS, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { showMessage } from 'react-native-flash-message'
+import ImagePicker from 'react-native-image-picker'
 import { IconAddPhoto, IconRemovePhoto, ILNullPhoto } from '../../assets'
 import { Button, Gap, Header, Link } from '../../components'
 import { colors, fonst } from '../../utils'
-import ImagePicker from 'react-native-image-picker';
-import { showMessage } from 'react-native-flash-message'
 //pemanggilan image menggunakan objek bawaan react-native
 const UploadPhoto = ({ navigation }) => {
     const [hasPhoto, setHasPhoto] = useState(false)

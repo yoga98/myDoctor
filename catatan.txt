@@ -69,3 +69,5 @@ lalu jalankan ulang dan install ulang apk
 1. pilih realtime databse 
 2. buat database
 3. pilih mode uji coba terlebih dahulu
+
+//menyinmpan data di local

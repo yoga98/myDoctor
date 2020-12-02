@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Gap, Header, Input, Loading } from '../../components';
-import { colors, useForm } from '../../utils';
-import {Fire} from '../../config';
+import { colors, getData, storeData, useForm } from '../../utils';
+import { Fire } from '../../config';
 import { showMessage, hideMessage } from "react-native-flash-message";
-import { color } from 'react-native-reanimated';
+
 
 //untuk membuat valeu kosong dan akan berisi maka menggunakan useState
 //diberi string kosong karena di awal form tampa isi
@@ -26,12 +26,12 @@ const Register = ({ navigation }) => {
     });
 
     //buat useState loading aktif/tidak
-    const [loading,setLoading] =useState(false)
+    const [loading, setLoading] = useState(false)
+
 
     // Buat fungsi untuk melakukan pengecekan
     const onContinue = () => {
         console.log(form);
-       
         setLoading(true);
         // nama Fire ini di buat di src config
         // kita ambil fungsi firebase yang berada di configurasi
@@ -41,17 +41,21 @@ const Register = ({ navigation }) => {
                 setLoading(false);
                 setForm('reset');
                 // tahapan menyinpan data
-                const data={
-                    fullName:form.fullName,
-                    profesional:form.profesional,
-                    email:form.email,
+                const data = {
+                    fullName: form.fullName,
+                    profesional: form.profesional,
+                    email: form.email,
                 }
-                
-                Fire
-                .database()
-                .ref('users/' +succes.user.uid+'/') //panggil fungsi database
-                .set(data);
 
+                Fire
+                    .database()
+                    .ref('users/' + succes.user.uid + '/') //panggil fungsi database
+                    .set(data);
+                // getData('user').then(res => {
+                //     console.log('data :', res)
+                // }) untuk tes smasuk apa tidak data local
+                storeData('user :', data);
+                navigation.navigate('UploadPhoto')
                 console.log('succes registrasi :', succes)
             })
             .catch((error) => {
@@ -59,55 +63,55 @@ const Register = ({ navigation }) => {
                 const errorMessage = error.message;
                 setLoading(false);
                 showMessage({
-                    message:errorMessage,
-                    type:'default',
-                    backgroundColor:colors.error,
-                    color:colors.white,
-                    
+                    message: errorMessage,
+                    type: 'default',
+                    backgroundColor: colors.error,
+                    color: colors.white,
+//s
                 });
                 // console.log('error register :', errorMessage)
-             });
+            });
     }
     return (
         <>
-        <View style={styles.page}>
-            {/* artinya navigation.goBack ketika di
+            <View style={styles.page}>
+                {/* artinya navigation.goBack ketika di
             klik maka fungisnya akan kembali ke halaman sebelumnya
              */}
-            <Header onPress={() => navigation.goBack()} title="Daftar Akun" />
-            <View style={styles.content}>   
-                {/*  
+                <Header onPress={() => navigation.goBack()} title="Daftar Akun" />
+                <View style={styles.content}>
+                    {/*  
                 props value berasa dari component Input, lalu isi dari value tersbut di ambil dari useState di atas,
                 agar ketika di ketika tidak berubah maka gunakan onChangetext yang berasal dari inputan
 
                 */}
-                <ScrollView showsVerticalScrollIndicator={false}>
-                    <Input
-                        value={form.fullName}
-                        label="Full Name"
-                        onChangeText={value => setForm('fullName', value)} />
-                    <Gap height={24} />
-                    <Input value={form.profesional}
-                        label="Pekerjaan"
-                        onChangeText={value => setForm('profesional', value)} />
-                    <Gap height={24} />
-                    <Input value={form.email}
-                        label="Email"
-                        onChangeText={(value) => setForm('email', value)} />
-                    <Gap height={24} />
-                    <Input value={form.password}
-                        label="Password"
-                        onChangeText={(value) => setForm('password', value)}
-                        secureTextEntry />
-                    <Gap height={40} />
-                    {/* Naviget untuk berpindah halaman yang dituju */}
-                    <Button title="Continue" onPress={onContinue} />
-                </ScrollView>
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                        <Input
+                            value={form.fullName}
+                            label="Full Name"
+                            onChangeText={value => setForm('fullName', value)} />
+                        <Gap height={24} />
+                        <Input value={form.profesional}
+                            label="Pekerjaan"
+                            onChangeText={value => setForm('profesional', value)} />
+                        <Gap height={24} />
+                        <Input value={form.email}
+                            label="Email"
+                            onChangeText={(value) => setForm('email', value)} />
+                        <Gap height={24} />
+                        <Input value={form.password}
+                            label="Password"
+                            onChangeText={(value) => setForm('password', value)}
+                            secureTextEntry />
+                        <Gap height={40} />
+                        {/* Naviget untuk berpindah halaman yang dituju */}
+                        <Button title="Continue" onPress={onContinue} />
+                    </ScrollView>
+                </View>
             </View>
-        </View>
-        {/* tampilan loading jika true */}
-        {loading &&  <Loading/> }
-        {/* ini adalah fragmen <> awal dan ini </> akhir */}
+            {/* tampilan loading jika true */}
+            {loading && <Loading />}
+            {/* ini adalah fragmen <> awal dan ini </> akhir */}
         </>
     )
 }

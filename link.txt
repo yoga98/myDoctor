@@ -13,3 +13,11 @@ lalu setelah itu kembali ke laman upload photo dan tambahkan
 ImagePicker.launchImageLibrary({},(response)=>{
     isi dari useState
 }
+
+3. menyimpan data locak
+https://react-native-async-storage.github.io/async-storage/docs/install 
+lalu install npm add @react-native-async-storage/async-storage
+lalu import di page  registrasi ini 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+jika error maka clean kode gradlew clean dan install ulang apk
