@@ -47,6 +47,7 @@ const Register = ({ navigation }) => {
                     fullName: form.fullName,
                     profesional: form.profesional,
                     email: form.email,
+                    uid:succes.user.uid,
                 }
 
                 Fire

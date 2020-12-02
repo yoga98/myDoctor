@@ -4,12 +4,14 @@ import { showMessage } from 'react-native-flash-message'
 import ImagePicker from 'react-native-image-picker'
 import { IconAddPhoto, IconRemovePhoto, ILNullPhoto } from '../../assets'
 import { Button, Gap, Header, Link } from '../../components'
+import { Fire } from '../../config'
 import { colors, fonst } from '../../utils'
 //pemanggilan image menggunakan objek bawaan react-native
 //tambah props
 const UploadPhoto = ({ navigation, route }) => {
-    const {fullName, profesional } = route.params; //parameter ini akan dikirim ke halam upload photos
-    const [hasPhoto, setHasPhoto] = useState(false)
+    const {fullName, profesional, uid } = route.params; //parameter ini akan dikirim ke halam upload photos
+    const [photoDb, setPhotoDb] = useState('')
+    const [hasPhoto, setHasPhoto] = useState(false) 
     const [photo, setPhoto] = useState(ILNullPhoto)
 
     //buat fungsi panggil image library
@@ -26,11 +28,21 @@ const UploadPhoto = ({ navigation, route }) => {
                     color: colors.white
                 });
             } else {
+                // console.log('response getImage :', response); cek console 
+                setPhotoDb (`data: ${response.type};base64,${response.data}`); //menggunakan ES6 dan photoDb akan di simpan di firebase  
                 const source = { uri: response.uri }; //memanggil source baru dari sebuah uri yang diman dari library kita sendiri
                 setPhoto(source);
                 setHasPhoto(true);
             }
         });
+    }
+    // ketika sudah upload photo langsung ke sini
+    const uploadEndContinue = () =>{
+        Fire
+        .database()
+        .ref('users/' + uid + '/') //panggil fungsi database
+        .update({photo:photoDb});
+        navigation.replace('MainApp')
     }
     return (
         <View style={styles.page}>
@@ -50,7 +62,7 @@ const UploadPhoto = ({ navigation, route }) => {
                     <Button
                         disable={!hasPhoto}
                         title="Upload and Continue"
-                        onPress={() => navigation.replace('MainApp')}
+                        onPress={uploadEndContinue }
                     />
                     <Gap height={30} />
                     <Link title="Skip for this" align="center" size={16} onPress={() => navigation.replace('MainApp')} />
