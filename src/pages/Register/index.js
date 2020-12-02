@@ -41,6 +41,8 @@ const Register = ({ navigation }) => {
                 setLoading(false);
                 setForm('reset');
                 // tahapan menyinpan data
+                //data ini akan di ambil untuk di tampilkan di halaman upload 
+                //tambah props di upload photo
                 const data = {
                     fullName: form.fullName,
                     profesional: form.profesional,
@@ -55,7 +57,7 @@ const Register = ({ navigation }) => {
                 //     console.log('data :', res)
                 // }) untuk tes smasuk apa tidak data local
                 storeData('user :', data);
-                navigation.navigate('UploadPhoto')
+                navigation.navigate('UploadPhoto',data)
                 console.log('succes registrasi :', succes)
             })
             .catch((error) => {

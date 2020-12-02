@@ -6,7 +6,9 @@ import { IconAddPhoto, IconRemovePhoto, ILNullPhoto } from '../../assets'
 import { Button, Gap, Header, Link } from '../../components'
 import { colors, fonst } from '../../utils'
 //pemanggilan image menggunakan objek bawaan react-native
-const UploadPhoto = ({ navigation }) => {
+//tambah props
+const UploadPhoto = ({ navigation, route }) => {
+    const {fullName, profesional } = route.params; //parameter ini akan dikirim ke halam upload photos
     const [hasPhoto, setHasPhoto] = useState(false)
     const [photo, setPhoto] = useState(ILNullPhoto)
 
@@ -41,8 +43,8 @@ const UploadPhoto = ({ navigation }) => {
                         {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
 
                     </TouchableOpacity>
-                    <Text style={styles.name}>Shayna Melinda</Text>
-                    <Text style={styles.profesiosnal}>Product Desainer</Text>
+                    <Text style={styles.name}>{fullName}</Text>
+                    <Text style={styles.profesiosnal}>{profesional}</Text>
                 </View>
                 <View>
                     <Button
