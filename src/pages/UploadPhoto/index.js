@@ -9,47 +9,49 @@ import { colors, fonst, storeData } from '../../utils'
 //pemanggilan image menggunakan objek bawaan react-native
 //tambah props
 const UploadPhoto = ({ navigation, route }) => {
-    const {fullName, profesional, uid } = route.params; //parameter ini akan dikirim ke halam upload photos
+    const { fullName, profesional, uid } = route.params; //parameter ini akan dikirim ke halam upload photos
     const [photoDb, setPhotoDb] = useState('')
-    const [hasPhoto, setHasPhoto] = useState(false) 
+    const [hasPhoto, setHasPhoto] = useState(false)
     const [photo, setPhoto] = useState(ILNullPhoto)
 
     //buat fungsi panggil image library
     //qualit untuk me resize ukuran 0.5= 50% dan maxheign maxwitdh bisa di atur
     const getImage = () => {
-        ImagePicker.launchImageLibrary({quality: 0.5, maxHeight:200, maxWidth:200}, (response) => {
-            //same code as in above section
-            console.log('response:', response);
-            //jika tidak jadi upload
-            if (response.didCancel || response.error) {
-                showMessage({
-                    message: 'Oops,Sepertinya anda tidak memilih Photonya?',
-                    type: 'default',
-                    backgroundColor: colors.error,
-                    color: colors.white 
-                });
-            } else {
-                // console.log('response getImage :', response); cek console 
-                setPhotoDb (`data: ${response.type};base64,${response.data}`); //menggunakan ES6 dan photoDb akan di simpan di firebase  
-                const source = { uri: response.uri }; //memanggil source baru dari sebuah uri yang diman dari library kita sendiri
-                setPhoto(source);
-                setHasPhoto(true);
+        ImagePicker.launchImageLibrary(
+            { quality: 0.5, maxHeight: 200, maxWidth: 200 }, (response) => {
+                //same code as in above section
+                console.log('response:', response);
+                //jika tidak jadi upload
+                if (response.didCancel || response.error) {
+                    showMessage({
+                        message: 'Oops,Sepertinya anda tidak memilih Photonya?',
+                        type: 'default',
+                        backgroundColor: colors.error,
+                        color: colors.white
+                    });
+                } else {
+                    // console.log('response getImage :', response); cek console 
+                    setPhotoDb(`data: ${response.type};base64,${response.data}`); //menggunakan ES6 dan photoDb akan di simpan di firebase  
+                    const source = { uri: response.uri }; //memanggil source baru dari sebuah uri yang diman dari library kita sendiri
+                    setPhoto(source)
+                    setHasPhoto(true)
+                }
             }
-        });
+        )
     }
     // ketika sudah upload photo langsung ke sini
-    const uploadEndContinue = () =>{
+    const uploadEndContinue = () => {
         Fire
-        .database()
-        .ref('users/' + uid + '/') //panggil fungsi database
-        .update({photo:photoDb});
-        
+            .database()
+            .ref('users/' + uid + '/') //panggil fungsi database
+            .update({ photo: photoDb });
+
         //*panggil data dan gambar dari locak
-        const data = route.params; 
+        const data = route.params;
         data.photo = photoDb;
         //simpan data di storedata yang nanati ditampilkan di homeprofile
-        storeData('user',data)
-        
+        storeData('user', data)
+
         navigation.replace('MainApp')
     }
     return (
@@ -70,7 +72,7 @@ const UploadPhoto = ({ navigation, route }) => {
                     <Button
                         disable={!hasPhoto}
                         title="Upload and Continue"
-                        onPress={uploadEndContinue }
+                        onPress={uploadEndContinue}
                     />
                     <Gap height={30} />
                     <Link title="Skip for this" align="center" size={16} onPress={() => navigation.replace('MainApp')} />

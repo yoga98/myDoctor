@@ -1,19 +1,23 @@
-
-
-
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { DumyUser, IconRemovePhoto } from '../../../assets'
 import { colors, fonst } from '../../../utils'
 //*buat props name dan desc
-const index = ({ name, desc,isRemove,photo }) => {
+const index = ({ name, desc, isRemove, photo, onPress }) => {
     return (
         <View style={styles.container}>
-            <View style={styles.borderProfile}>
-                <Image source={photo} style={styles.avatar} />
-               {isRemove &&  <IconRemovePhoto style={styles.RemovePhoto} />}
-            </View>
+            {!isRemove && (
+                <View style={styles.borderProfile}>
+                    <Image source={photo} style={styles.avatar} />
+                </View>
+            )}
             {/* Logic agar ketika tidak ada nama akan kosong dan tidak ada space */}
+            {isRemove && (
+                <TouchableOpacity style={styles.borderProfile} onPress={onPress}>
+                    <Image source={photo} style={styles.avatar} />
+                    {isRemove && <IconRemovePhoto style={styles.RemovePhoto} />}
+                </TouchableOpacity>
+            )}
             { name && (
                 <View>
                     <Text style={styles.name}>{name}</Text>
