@@ -2,15 +2,26 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ILLogo } from '../../assets';
 import { colors, fonst } from '../../utils';
-
+import {Fire} from '../../config';
 const Splash = ({ navigation }) => {
     //useeffect adalah adalah hooks pada reactnative
     //setTime mengatur durasi berapa lama akan muncul/keluar 
     useEffect(() => {
         setTimeout(() => {
-            navigation.replace('GetStarted')
+            //*cek user masih login teknik  session 
+            Fire.auth().onAuthStateChanged((user) =>{
+                if(user){
+                    //user login
+                    console.log('user :', user)
+                    navigation.replace('MainApp')
+                }
+                else{
+                    //user logout
+                    navigation.replace('GetStarted')
+                }
+            })
         }, 3000)
-    });
+    },[navigation]);
     return (
         <View style={styles.page} >
             <ILLogo />
