@@ -1,13 +1,16 @@
+
+
+
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import { DumyUser, IconRemovePhoto } from '../../../assets'
 import { colors, fonst } from '../../../utils'
 //*buat props name dan desc
-const index = ({ name, desc,isRemove }) => {
+const index = ({ name, desc,isRemove,photo }) => {
     return (
         <View style={styles.container}>
             <View style={styles.borderProfile}>
-                <Image source={DumyUser} style={styles.avatar} />
+                <Image source={photo} style={styles.avatar} />
                {isRemove &&  <IconRemovePhoto style={styles.RemovePhoto} />}
             </View>
             {/* Logic agar ketika tidak ada nama akan kosong dan tidak ada space */}
