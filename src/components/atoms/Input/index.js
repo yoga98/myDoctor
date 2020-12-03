@@ -5,7 +5,7 @@ import { colors, fonst } from '../../../utils';
 //*label adalah bagian dari prop yang di munculkan di halaman login
 //*untuk memanggil useState harus di import dari React
 //membuat props value dan onChangeText untuk menerima masukan pada inputan
-const Input = ({ label, value, onChangeText,secureTextEntry}) => {
+const Input = ({ label, value, onChangeText,secureTextEntry,disable}) => {
     //* buat useState yang di beri nama border, dan setBorder yg mengsilkan useState colors.border
     const [border, setBorder] = useState(colors.border);
     //* panggil Props onFocus yang isinya dibawah in
@@ -15,6 +15,7 @@ const Input = ({ label, value, onChangeText,secureTextEntry}) => {
     const onBlurForm = () => {
         setBorder(colors.border)
     };
+   
     return (
         <View>
             <Text style={styles.label}>{label}</Text>
@@ -25,6 +26,9 @@ const Input = ({ label, value, onChangeText,secureTextEntry}) => {
                 value={value}
                 onChangeText={onChangeText}
                 secureTextEntry={secureTextEntry}
+                //cara disable aktif di edit profile email
+                editable={!disable}
+                selectTextOnFocus={!disable}
             />
         </View>
     )
