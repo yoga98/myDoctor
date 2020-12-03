@@ -5,7 +5,7 @@ import ImagePicker from 'react-native-image-picker'
 import { IconAddPhoto, IconRemovePhoto, ILNullPhoto } from '../../assets'
 import { Button, Gap, Header, Link } from '../../components'
 import { Fire } from '../../config'
-import { colors, fonst } from '../../utils'
+import { colors, fonst, storeData } from '../../utils'
 //pemanggilan image menggunakan objek bawaan react-native
 //tambah props
 const UploadPhoto = ({ navigation, route }) => {
@@ -15,8 +15,9 @@ const UploadPhoto = ({ navigation, route }) => {
     const [photo, setPhoto] = useState(ILNullPhoto)
 
     //buat fungsi panggil image library
+    //qualit untuk me resize ukuran 0.5= 50% dan maxheign maxwitdh bisa di atur
     const getImage = () => {
-        ImagePicker.launchImageLibrary({}, (response) => {
+        ImagePicker.launchImageLibrary({quality: 0.5, maxHeight:200, maxWidth:200}, (response) => {
             //same code as in above section
             console.log('response:', response);
             //jika tidak jadi upload
@@ -25,7 +26,7 @@ const UploadPhoto = ({ navigation, route }) => {
                     message: 'Oops,Sepertinya anda tidak memilih Photonya?',
                     type: 'default',
                     backgroundColor: colors.error,
-                    color: colors.white
+                    color: colors.white 
                 });
             } else {
                 // console.log('response getImage :', response); cek console 
@@ -42,6 +43,13 @@ const UploadPhoto = ({ navigation, route }) => {
         .database()
         .ref('users/' + uid + '/') //panggil fungsi database
         .update({photo:photoDb});
+        
+        //*panggil data dan gambar dari locak
+        const data = route.params; 
+        data.photo = photoDb;
+        //simpan data di storedata yang nanati ditampilkan di homeprofile
+        storeData('user',data)
+        
         navigation.replace('MainApp')
     }
     return (

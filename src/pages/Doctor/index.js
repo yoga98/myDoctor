@@ -1,11 +1,20 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { DumyDoctor1,DumyDoctor2,DumyDoctor3, JSONCategoriDoc } from '../../assets'
 import { DoctorCategori, Gap, HomeProfile, NewsItem, RatedDoctor } from '../../components'
-import { colors, fonst } from '../../utils'
+import { colors, fonst, getData } from '../../utils'
 
 
 const Doctor = ({ navigation }) => {
+    //cek data local dan gunakan degub untuk melihat
+    // useEffect(() => {
+    //     getData('user').then(res =>{
+    //         console.log('data user:', res)
+    //     });
+    // }, [])         
+
+
     return (
         <View style={styles.page}>
             <View style={styles.conten}>

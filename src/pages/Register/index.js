@@ -19,7 +19,7 @@ const Register = ({ navigation }) => {
     //panggil useState yg sudah dibuat
     //jadi hanya buat satu useState tidak perlu membuat banyak seperti contoh di atas
     const [form, setForm] = useForm({
-        fullname: '',
+        fullName: '',
         profesional: '',
         email: '',
         password: '',
