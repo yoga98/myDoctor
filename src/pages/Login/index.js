@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
 import { ScrollView } from 'react-native-gesture-handler';
-import { set } from 'react-native-reanimated';
+import { useDispatch } from 'react-redux';
 import { ILLogo } from '../../assets';
-import { Loading } from '../../components';
 import { Button, Gap, Input, Link } from '../../components/atoms';
 import { Fire } from '../../config';
 import { colors, fonst, storeData, useForm } from '../../utils';
 
 const Login = ({ navigation }) => {
     //*effec loading 
-    const [loading, setLoading] = useState(false)
+    // const [loading, setLoading] = useState(false)
+
+    //*variable yang merubah  suatu reduser dalam redux
+    const dispatch = useDispatch();
 
     //* buat useForm
     const [form, setForm] = useForm({
@@ -20,11 +22,11 @@ const Login = ({ navigation }) => {
     });
     const login = () => {
         console.log('form :', form)  //cek terlebih dahulu ada apa saja dalam form
-        setLoading(true)
+        dispatch({ type: 'SET_LOADING', value: true }); //panggil loading
         Fire.auth().signInWithEmailAndPassword(form.email, form.password)
             .then(res => {
                 console.log('succes :', res);
-                setLoading(false);
+                dispatch({ type: 'SET_LOADING', value: false });
                 //*tambah firebase ambil data local
                 Fire.database()
                     .ref(`users/${res.user.uid}/`)
@@ -41,7 +43,7 @@ const Login = ({ navigation }) => {
             })
             .catch(err => {
                 console.log('error :', err);
-                setLoading(false)
+                dispatch({ type: 'SET_LOADING', value: false });
                 showMessage({
                     message: err.message,
                     type: 'default',
@@ -50,27 +52,35 @@ const Login = ({ navigation }) => {
                 })
             });
 
-    }
+    };
+    //fungsi loading redux yang dibuat di reduser
+    //const showLoadingTemp = () => {
+    // value = true/false
+    //  dispatch({ type: 'SET_LOADING', value: true }) 
+
+    // }
     return (
-        <>
-            <View style={styles.page}>
-                <ScrollView showsVerticalScrollIndicator={false}>
-                    <Gap height={40} />
-                    <ILLogo />
-                    <Text style={styles.title}>Mulai dan berkonsultasi</Text>
-                    <Input label="Email Address" value={form.email} onChangeText={value => setForm('email', value)} />
-                    <Gap height={24} />
-                    <Input label="Password" value={form.password} onChangeText={value => setForm('password', value)} secureTextEntry />
-                    <Gap height={10} />
-                    <Link title="Forgot My Password" size={12} />
-                    <Gap height={40} />
-                    <Button title="Sign In" onPress={login} />
-                    <Gap height={30} />
-                    <Link title="Create New Account" size={16} align="center" onPress={() => navigation.navigate('Register')} />
-                </ScrollView>
-            </View>
-            {loading && <Loading />}
-        </>
+        <View style={styles.page}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <Gap height={40} />
+                <ILLogo />
+                <Text style={styles.title}>Mulai dan berkonsultasi</Text>
+                <Input label="Email Address" value={form.email} onChangeText={value => setForm('email', value)} />
+                <Gap height={24} />
+                <Input label="Password" value={form.password} onChangeText={value => setForm('password', value)} secureTextEntry />
+                <Gap height={10} />
+                <Link title="Forgot My Password" size={12} />
+                <Gap height={40} />
+                <Button title="Sign In" onPress={login} />
+                <Gap height={30} />
+                <Link
+                    title="Create New Account"
+                    size={16}
+                    align="center"
+                    onPress={() => navigation.navigate('Register')}
+                />
+            </ScrollView>
+        </View>
     )
 }
 

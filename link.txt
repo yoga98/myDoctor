@@ -21,3 +21,12 @@ lalu import di page  registrasi ini
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 jika error maka clean kode gradlew clean dan install ulang apk
+
+
+//install redux dan react redux
+https://redux.js.org/
+# NPM
+npm install redux 
+//react redux 
+https://react-redux.js.org/
+npm install react-redux

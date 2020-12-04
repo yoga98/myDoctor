@@ -70,4 +70,5 @@ lalu jalankan ulang dan install ulang apk
 2. buat database
 3. pilih mode uji coba terlebih dahulu
 
-//menyinmpan data di local
+//cara menggunakan redux
+install redux di link.txt
