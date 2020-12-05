@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { ILLogo } from '../../assets';
 import { Button, Gap, Input, Link } from '../../components/atoms';
 import { Fire } from '../../config';
-import { colors, fonst, storeData, useForm } from '../../utils';
+import { colors, fonst, showError, showSuccess, storeData, useForm } from '../../utils';
 
 const Login = ({ navigation }) => {
     //*effec loading 
@@ -44,12 +44,8 @@ const Login = ({ navigation }) => {
             .catch(err => {
                 console.log('error :', err);
                 dispatch({ type: 'SET_LOADING', value: false });
-                showMessage({
-                    message: err.message,
-                    type: 'default',
-                    color: colors.white,
-                    backgroundColor: colors.error
-                })
+                showError(err.message) //menggunakan fungsi global showMessage
+                // showSuccess('loading Succes')cara panggil showSuccess
             });
 
     };

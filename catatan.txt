@@ -72,3 +72,14 @@ lalu jalankan ulang dan install ulang apk
 
 //cara menggunakan redux
 install redux di link.txt
+
+
+
+//catatan refactoring 
+hapus semua coding yang ada console.log 
+
+
+//cara list new dari data firebase
+dari dummy data menjadi dinamis yang di input dari firebase
+
+menyinmpan gambar di storage firebase

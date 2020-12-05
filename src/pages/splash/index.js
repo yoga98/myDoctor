@@ -2,26 +2,27 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ILLogo } from '../../assets';
 import { colors, fonst } from '../../utils';
-import {Fire} from '../../config';
+import { Fire } from '../../config';
 const Splash = ({ navigation }) => {
     //useeffect adalah adalah hooks pada reactnative
     //setTime mengatur durasi berapa lama akan muncul/keluar 
     useEffect(() => {
-        setTimeout(() => {
-            //*cek user masih login teknik  session 
-            Fire.auth().onAuthStateChanged((user) =>{
-                if(user){
+        const unsubscibe = Fire.auth().onAuthStateChanged((user) => {
+            setTimeout(() => {
+                //*cek user masih login teknik  session 
+                if (user) {
                     //user login
                     console.log('user :', user)
                     navigation.replace('MainApp')
                 }
-                else{
+                else {
                     //user logout
                     navigation.replace('GetStarted')
                 }
-            })
-        }, 3000)
-    },[navigation]);
+            }, 3000);
+        });
+        return () => unsubscibe(); // dibersihkan ketika bug splash screen ini cara membersihkan logic 
+    }, [navigation]);
     return (
         <View style={styles.page} >
             <ILLogo />
