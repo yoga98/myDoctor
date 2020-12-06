@@ -83,3 +83,5 @@ hapus semua coding yang ada console.log
 dari dummy data menjadi dinamis yang di input dari firebase
 
 menyinmpan gambar di storage firebase
+
+//tugas hospital sama dengan news koding

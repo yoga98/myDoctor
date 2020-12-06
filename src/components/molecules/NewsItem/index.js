@@ -3,14 +3,16 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import { DumyNews1 } from '../../../assets'
 import { colors, fonst } from '../../../utils'
 
-const NewsItem = () => {
+//buat props agar dinamis
+const NewsItem = ({title,date,image}) => {
     return (
         <View style={styles.container}>
             <View style={styles.wrapperTittle}>
-                <Text style={styles.title}>Is it safe stay at home during coronavirus?</Text>
-                <Text style={styles.date}>Today</Text>
+                <Text style={styles.title}>{title}</Text>
+    <Text style={styles.date}>{date}</Text>
             </View>
-            <Image source={DumyNews1} style={styles.Image} />
+        {/* jika berupa link url maka tampilak objek uri */}
+            <Image source={{uri: image}} style={styles.Image} />
         </View>
     )
 }

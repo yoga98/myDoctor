@@ -6,28 +6,28 @@ import { colors } from '../../../utils/color'
 
 //buat props categori dalam objek
 
-const DoctorCategori = ({ categori ,onPress}) => {
+const DoctorCategori = ({ category ,onPress}) => {
     //agar icon dinamis berumah diberi kondisi
     //lalu di panggil di dalam view
     //lalu akan muncul di Page Doctro Categori
     const Icon = () => {
-        if (categori === 'dokter umum') {
+        if (category === 'dokter umum') {
             return <ILCatUmum style={styles.illustration} />
         }
-        if (categori === 'psikiater') {
-            <ILCatPsikiater style={styles.illustration} />
+        if (category === 'psikiater') {
+            return <ILCatPsikiater style={styles.illustration} />
         }
-        if (categori === 'dokter obat') {
+        if (category === 'dokter obat') {
             return <ILCatObat style={styles.illustration} />
         }
-        return <ILCatPsikiater style={styles.illustration} />
+        return <ILCatUmum style={styles.illustration} />
     }
     // agarbisa di klik pada card dokter gunakan TouchableOpacity 
     return (
         <TouchableOpacity style={styles.container} onPress={onPress} >
             <Icon />
             <Text style={styles.label}>Saya Butuh</Text>
-            <Text style={styles.categori}>{categori}</Text>
+            <Text style={styles.category}>{category}</Text>
         </TouchableOpacity>
     )
 }
