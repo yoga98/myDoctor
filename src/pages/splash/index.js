@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { ILLogo } from '../../assets';
 import { colors, fonst } from '../../utils';
 import { Fire } from '../../config';
+
 const Splash = ({ navigation }) => {
     //useeffect adalah adalah hooks pada reactnative
     //setTime mengatur durasi berapa lama akan muncul/keluar 

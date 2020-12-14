@@ -28,7 +28,7 @@ const DoctorCategori = ({ category ,onPress}) => {
             <Icon />
             <Text style={styles.label}>Saya Butuh</Text>
             <Text style={styles.category}>{category}</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> 
     )
 }
 

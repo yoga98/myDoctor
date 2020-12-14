@@ -85,3 +85,7 @@ dari dummy data menjadi dinamis yang di input dari firebase
 menyinmpan gambar di storage firebase
 
 //tugas hospital sama dengan news koding
+
+//tugas di list Doctor cek google drive
+
+//jika membuat apk maka databasenya harus sama atau bisa di copy paste di congif databse

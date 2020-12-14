@@ -8,6 +8,9 @@ import { colors, fonst, getData, showError } from '../../utils'
 import { Fire } from '../../config';
 
 const Doctor = ({ navigation }) => {
+
+
+    const [doctors, setDocter] = useState([])
     //*cek data local dan gunakan degub untuk melihat
     // useEffect(() => {
     //     getData('user').then(res =>{
@@ -20,19 +23,66 @@ const Doctor = ({ navigation }) => {
     const [categoryDoctor, setCategoriDoctor] = useState([]);
     const [news, setNews] = useState([]);
     useEffect(() => {
-        Fire.database().ref('news/')
+        GetDataCateDoctor();
+        GetDataTopRateDoctor();
+        GetDataNews();
+        // cara pertama
+        // Fire.database()
+        //     .ref('category_doctor/')
+        //     .once('value')
+        //     .then(res => {
+        //         console.log('category doctor :', res.val());
+        //         //jika ada nilai maka munculkan
+        //         if (res.val()) {
+        //             //jadikan value baru
+        //             setCategoriDoctor(res.val())
+        //         }
+        //     }).catch(err => {
+        //         showError(err.message)
+        //     });
+    }, []);
+
+
+    //membuat objek ke array dari firebase contoh
+    // const parseArray = (listObject) => {
+    // definiskan objek 
+    // const data = []; //diparse menjadi data array
+    // Object.keys(Object).map(key => {
+    // data.push({
+    //     id: key,
+    //     data: listObjek.[key],
+    // })
+    // }) //jadikan array 
+    //     return data;
+    // =}
+
+    //cara kedua agar lebih clean code
+    const GetDataTopRateDoctor = () => {
+        Fire.database()
+            .ref('doctors/')
+            .orderByChild('rate')
+            .limitToLast(3) //mengambil nilai terakhir dari 3
             .once('value')
             .then(res => {
-                console.log('data :', res.val());
-                //jika res.val() ada nilai maka munculkan
+                console.log('Top rated doctor :', res.val());
+                //jika ada nilai maka munculkan
                 if (res.val()) {
-                    //jadi value baru
-                    setNews(res.val());
+                    const OldData = res.val();
+                    const data = []; //diparse menjadi data array
+                    Object.keys(OldData).map(key => {
+                        data.push({
+                            id: key,
+                            data: OldData[key],
+                        });
+                    }); //jadikan array 
+                    console.log('data hasil perse :', data)
+                    setDocter(data);
                 }
             }).catch(err => {
-                showError(err.message);
+                showError(err.message)
             });
-
+    }
+    const GetDataCateDoctor = () => {
         Fire.database()
             .ref('category_doctor/')
             .once('value')
@@ -46,7 +96,23 @@ const Doctor = ({ navigation }) => {
             }).catch(err => {
                 showError(err.message)
             });
-    }, []);
+    }
+    const GetDataNews = () => {
+        Fire.database().ref('news/')
+            .once('value')
+            .then(res => {
+                console.log('data :', res.val());
+                //jika res.val() ada nilai maka munculkan
+                if (res.val()) {
+                    //jadi value baru
+                    setNews(res.val());
+                }
+            }).catch(err => {
+                showError(err.message);
+            });
+
+    }
+
     return (
         <View style={styles.page}>
             <View style={styles.conten}>
@@ -88,9 +154,19 @@ lalu agar indikator scrollnya hilang maka matikan gunakan showHorizontalScrollIn
                     </View>
                     <View style={styles.wrapperSection}>
                         <Text style={styles.sectionLabel}>Top Rated Doctor</Text>
-                        <RatedDoctor avatar={DumyDoctor1} name="Alexa Srinda" desc="Dokter Anak" onPress={() => navigation.navigate('DoctorProfile')} />
+                        {doctors.map(doctors => {
+                            return (
+                                <RatedDoctor
+                                    key={doctors.id}
+                                    avatar={{ uri: doctors.data.photo }}
+                                    name={doctors.data.fullName}
+                                    desc={doctors.data.propresional}
+                                    onPress={() => navigation.navigate('DoctorProfile')} />
+                            )
+                        })}
+                        {/* <RatedDoctor avatar={DumyDoctor1} name="Alexa Srinda" desc="Dokter Anak" onPress={() => navigation.navigate('DoctorProfile')} />
                         <RatedDoctor avatar={DumyDoctor2} name="Husabah" desc="Dokter Psikiater" onPress={() => navigation.navigate('DoctorProfile')} />
-                        <RatedDoctor avatar={DumyDoctor3} name="Barbara" desc="Dokter Anak" onPress={() => navigation.navigate('DoctorProfile')} />
+                        <RatedDoctor avatar={DumyDoctor3} name="Barbara" desc="Dokter Anak" onPress={() => navigation.navigate('DoctorProfile')} /> */}
                         <Text style={styles.sectionLabel}>Good News</Text>
                     </View>
                     {/* Looping news item */}

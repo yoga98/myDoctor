@@ -16,9 +16,6 @@ import DummyHospital2 from './Hospital2.png';
 import DummyHospital3 from './Hospital3.png';
 
 
-
-
-
 export {
     DumyUser,
     DumyDoctor1,
