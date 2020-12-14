@@ -3,17 +3,22 @@ import { StyleSheet, View } from 'react-native'
 import { Button, Gap, Header, Profile, ProfileItem } from '../../components'
 import { colors } from '../../utils'
 
-const index = ({navigation}) => {
+const index = ({ navigation, route }) => {
+    const dataDoctor = route.params; // ambil param doctor yang ada di Doctor page
+
+
     return (
         <View style={styles.page}>
-            <Header title="Doctor Profile" onPress={()=> navigation.goBack()}/>
-            <Profile name="Alexsandria Nairo Putri" desc="Dokter Anak" />
+            <Header title="Doctor Profile" onPress={() => navigation.goBack()} />
+            <Profile name={dataDoctor.data.fullName} desc={dataDoctor.data.profession} 
+            photo={{uri: dataDoctor.data.photo}}
+            />
             <Gap height={10} />
-            <ProfileItem label="Alumnus" value="Universitas Indonesia" />
-            <ProfileItem label="Tempat Praktik" value="Rumah Sakit Umum, Bandung" />
-            <ProfileItem label="No. STR" value="0000116622081996 " />
+            <ProfileItem label="Alumnus" value={dataDoctor.data.university}/>
+            <ProfileItem label="Tempat Praktik" value={dataDoctor.data.hospital_address} />
+            <ProfileItem label="No. STR" value={dataDoctor.data.str_number} />
             <View style={styles.wrapper}>
-                <Button title="Start Consultation" onPress={()=> navigation.navigate('Chatting')}/>
+                <Button title="Start Consultation" onPress={() => navigation.navigate('Chatting')} />
             </View>
         </View>
     )
@@ -26,5 +31,5 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white,
         flex: 1
     },
-    wrapper:{paddingHorizontal:40, paddingTop:23}
+    wrapper: { paddingHorizontal: 40, paddingTop: 23 }
 })

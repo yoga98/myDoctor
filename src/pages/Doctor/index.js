@@ -161,7 +161,7 @@ lalu agar indikator scrollnya hilang maka matikan gunakan showHorizontalScrollIn
                                     avatar={{ uri: doctors.data.photo }}
                                     name={doctors.data.fullName}
                                     desc={doctors.data.propresional}
-                                    onPress={() => navigation.navigate('DoctorProfile')} />
+                                    onPress={() => navigation.navigate('DoctorProfile',doctors)} />  //Kirim parameter
                             )
                         })}
                         {/* <RatedDoctor avatar={DumyDoctor1} name="Alexa Srinda" desc="Dokter Anak" onPress={() => navigation.navigate('DoctorProfile')} />
