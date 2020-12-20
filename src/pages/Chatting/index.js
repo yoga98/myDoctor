@@ -2,9 +2,10 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { set } from 'react-native-reanimated'
 import { ChattItem, Header, InputChat } from '../../components'
 import { Fire } from '../../config'
-import { colors, fonst, getData, showError } from '../../utils'
+import { colors, fonst, getData, getTimeChat, setDateChat, showError } from '../../utils'
 
 const Chatting = ({ navigation, route }) => {
     const dataDoctor = route.params;
@@ -20,33 +21,29 @@ const Chatting = ({ navigation, route }) => {
     const chatSend = () => { //kirim pesan button  
         //cara mendapatkan hari jam menit
         const today = new Date();
-        const hour = today.getHours(); //jam
-        const minute = today.getMinutes(); //menit
-        const year = today.getFullYear(); //tahun
-        const month = today.getMonth() + 1 //bulan (standar javascript bulan dihutiung dari nol)        
-        const date = today.getDate() //tanggal
         // console.log('Chat Terkirim :', chatContent)
+      
         const data = {
             sendBy: user.uid,
-            chatDate: new Date().getTime(),
-            chatTime: `${hour}:${minute} ${hour > 12 ? 'PM' : 'AM'}`,
+            chatDate: today.getTime(),
+            chatTime: getTimeChat(today),//diambil dari utils date
             chatContent: chatContent
         }
+        const chatID = `${user.uid}_${dataDoctor.data.uid}`
+        const urlFireBase = `chatting/${chatID}/allChat/${setDateChat(today)}`
         console.log('data untuk dikirim:', data)
-        console.log('Cek url',
-            `chatting/${user.uid}_${dataDoctor.data.uid}/allChat/${year}-${month}-${date}`
-        )
+        console.log('Cek url', urlFireBase)
         setChatContent('') //agar setelah dikirim kotak pesan kosong
 
         //kirim ke firebase
         Fire.database()
-            .ref(`chatting/${user.uid}_${dataDoctor.data.uid}/allChat/${year}-${month}-${date}`)
+            .ref(urlFireBase)
             .push(data)  //mengirimkan chatID uid user dan dokter
-            .then(()=>{
+            .then(() => {
                 console.log(
                     setChatContent('') //jika berhasil kosongkan
                 )
-            }).catch(err =>{
+            }).catch(err => {
                 showError(err.message)
             })
     }
