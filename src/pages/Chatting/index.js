@@ -15,7 +15,7 @@ const Chatting = ({navigation}) => {
             </View>
             <InputChat />
         </View>
-    )
+    )asasas
 }
 
 export default Chatting
