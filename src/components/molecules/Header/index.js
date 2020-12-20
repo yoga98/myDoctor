@@ -9,10 +9,10 @@ import DarkProfile from './DarkProfile';
 //akan muncul di register,
 //type akan menjadi parameter untuk merubah kondisi sebuat tampilan/
 //pada button buat kondisi sama masukan parameter type 
-const Header = ({ onPress, title, type }) => {
+const Header = ({ onPress, title, type,desc,photo }) => {
     // kondisi agar lebih dinamis
     if(type === 'dark-profile'){
-        return <DarkProfile onPress={onPress}/>
+        return <DarkProfile onPress={onPress} title={title} desc={desc} photo={photo}/>
     }
     return (
         <View style={styles.container(type)}>

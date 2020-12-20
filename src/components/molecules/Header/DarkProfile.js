@@ -4,15 +4,15 @@ import { DumyDoctor8 } from '../../../assets'
 import { colors, fonst } from '../../../utils'
 import { Button } from '../../atoms'
 
-const DarkProfile = ({onPress}) => {
+const DarkProfile = ({onPress,title,desc,photo}) => {
     return (
         <View style={styles.container} >
             <Button type="icon-only" icon="back-light" onPress={onPress} />
             <View style={styles.conten}>
-                <Text style={styles.name}>Nairo Putri Hayza</Text>
-                <Text style={styles.des}>Dokter anak</Text>
+                <Text style={styles.name}>{title}</Text>
+                <Text style={styles.des}>{desc}</Text>
             </View>
-            <Image source={DumyDoctor8} style={styles.avatar} />
+            <Image source={photo} style={styles.avatar} />
         </View>
     )
 }

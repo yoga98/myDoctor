@@ -12,7 +12,7 @@ const Button = ({ type, title, onPress, icon, disable }) => {
     //icon-only ini akan dijadikan sebagai kumpulan kumpulan icon secara dinamis
     //tambahkan juga onpress agar bisa diklik
     if (type === 'btn-icon-send') {
-        return <BtnIconSend disable={disable} />
+        return <BtnIconSend disable={disable} onPress={onPress} />
     }
     if (type === 'icon-only') {
         return (
