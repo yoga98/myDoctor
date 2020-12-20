@@ -46,5 +46,5 @@ const styles = StyleSheet.create({
     },
     illustration: { marginBottom: 28 },
     label: { fontSize: 12, fontFamily: fonst.primary[300], color: colors.text.primary },
-    categori: { fontSize: 12, fontFamily: fonst.primary[600], color: colors.text.primary, width: 80 }
+    category: { fontSize: 12, fontFamily: fonst.primary[600], color: colors.text.primary, width: 80,textTransform:'capitalize' }
 })

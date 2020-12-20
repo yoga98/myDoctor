@@ -90,8 +90,11 @@ const Doctor = ({ navigation }) => {
                 console.log('category doctor :', res.val());
                 //jika ada nilai maka munculkan
                 if (res.val()) {
+                    const data = res.val();
+                    const filterData = data.filter(el => el !== null) //cara menghapus empty
+                    console.log('filter data :', filterData)
                     //jadikan value baru
-                    setCategoriDoctor(res.val())
+                    setCategoriDoctor(filterData)
                 }
             }).catch(err => {
                 showError(err.message)
@@ -104,8 +107,10 @@ const Doctor = ({ navigation }) => {
                 console.log('data :', res.val());
                 //jika res.val() ada nilai maka munculkan
                 if (res.val()) {
+                    const data = res.val()
+                    const filterData = data.filter(el => el !== null)
                     //jadi value baru
-                    setNews(res.val());
+                    setNews(filterData);
                 }
             }).catch(err => {
                 showError(err.message);
@@ -144,8 +149,9 @@ lalu agar indikator scrollnya hilang maka matikan gunakan showHorizontalScrollIn
                                 {/* panggila menggunakan UseState */}
                                 {
                                     categoryDoctor.map(item => {
-                                        return <DoctorCategori key={item.id} category={item.category}
-                                            onPress={() => navigation.navigate('ChooseDoctor')} />
+                                        return <DoctorCategori
+                                            key={`category-${item.id}`} category={item.category}
+                                            onPress={() => navigation.navigate('ChooseDoctor', item)} />
                                     })
                                 }
                                 <Gap width={22} />
@@ -160,8 +166,8 @@ lalu agar indikator scrollnya hilang maka matikan gunakan showHorizontalScrollIn
                                     key={doctors.id}
                                     avatar={{ uri: doctors.data.photo }}
                                     name={doctors.data.fullName}
-                                    desc={doctors.data.propresional}
-                                    onPress={() => navigation.navigate('DoctorProfile',doctors)} />  //Kirim parameter
+                                    desc={doctors.data.profession}
+                                    onPress={() => navigation.navigate('DoctorProfile', doctors)} />  //Kirim parameter
                             )
                         })}
                         {/* <RatedDoctor avatar={DumyDoctor1} name="Alexa Srinda" desc="Dokter Anak" onPress={() => navigation.navigate('DoctorProfile')} />

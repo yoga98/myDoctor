@@ -5,8 +5,6 @@ import { colors } from '../../utils'
 
 const index = ({ navigation, route }) => {
     const dataDoctor = route.params; // ambil param doctor yang ada di Doctor page
-
-
     return (
         <View style={styles.page}>
             <Header title="Doctor Profile" onPress={() => navigation.goBack()} />

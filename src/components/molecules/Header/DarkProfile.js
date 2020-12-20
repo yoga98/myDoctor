@@ -1,10 +1,9 @@
 import React from 'react'
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { DumyDoctor8 } from '../../../assets'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import { colors, fonst } from '../../../utils'
 import { Button } from '../../atoms'
 
-const DarkProfile = ({onPress,title,desc,photo}) => {
+const DarkProfile = ({ onPress, title, desc, photo }) => {
     return (
         <View style={styles.container} >
             <Button type="icon-only" icon="back-light" onPress={onPress} />
@@ -27,10 +26,22 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
         flexDirection: 'row',
-        alignContent:'center'
+        alignContent: 'center'
     },
-    conten:{flex:1},
-    avatar:{borderRadius: 46/2, width:46,height:46},
-    name:{fontSize:20,fontFamily:fonst.primary[600],color:colors.white,textAlign:"center"},
-    des:{fontSize:14,fontFamily:fonst.primary.normal,marginTop:6,textAlign:'center',color:colors.text.subTitle}
+    conten: { flex: 1 },
+    avatar: { borderRadius: 46 / 2, width: 46, height: 46 },
+    name: {
+        fontSize: 20,
+        fontFamily: fonst.primary[600],
+        color: colors.white,
+        textAlign: "center"
+    },
+    des: {
+        fontSize: 14,
+        fontFamily: fonst.primary.normal,
+        marginTop: 6,
+        textAlign: 'center',
+        color: colors.text.subTitle,
+        textTransform:'capitalize'
+    }
 })

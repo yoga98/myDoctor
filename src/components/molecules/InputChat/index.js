@@ -4,13 +4,15 @@ import { color } from 'react-native-reanimated'
 import { colors, fonst } from '../../../utils'
 import { Button } from '../../atoms'
 
-const InputChat = ({value,onChangeText,onButtonPress}) => {
+const InputChat = ({ value, onChangeText, onButtonPress }) => {
     return (
         <View style={styles.container}>
-            <TextInput style={styles.input} placeholder="Tulis Pesan" value={value} onChangeText={onChangeText} />
-            <Button 
-            disable={value.length <1 }
-            type="btn-icon-send" onPress={onButtonPress} />
+            <TextInput style={styles.input}
+                placeholder="Tulis Pesan"
+                value={value} onChangeText={onChangeText} />
+            <Button
+                disable={value.length < 1}
+                type="btn-icon-send" onPress={onButtonPress} />
         </View>
     )
 }
@@ -18,15 +20,15 @@ const InputChat = ({value,onChangeText,onButtonPress}) => {
 export default InputChat
 
 const styles = StyleSheet.create({
-    container: { padding: 16, flexDirection: 'row' ,backgroundColor:colors.white},
+    container: { padding: 16, flexDirection: 'row', backgroundColor: colors.white },
     input: {
         backgroundColor: colors.disable,
         padding: 14,
         borderRadius: 10,
         flex: 1,
         marginRight: 10,
-        fontFamily:fonst.primary.normal,
-        fontSize:14,
-        maxHeight:45
+        fontFamily: fonst.primary.normal,
+        fontSize: 14,
+        maxHeight: 45
     }
 })

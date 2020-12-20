@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
         fontSize:12,
         fontFamily:fonst.primary.normal,
         color:colors.text.secondary,
-        marginTop:2
+        marginTop:2,
+        textTransform:'capitalize'
     },
     profile:{
         flex:1
