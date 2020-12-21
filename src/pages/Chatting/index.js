@@ -100,12 +100,14 @@ const Chatting = ({ navigation, route }) => {
                         return (
                             <View key={chat.id}>
                                 <Text style={styles.chatDate}>{chat.id}</Text>
-                                {chat.data.map(itemChat=>{
-                                    return <ChattItem 
-                                    key={itemChat.id}
-                                    isMe={itemChat.data.sendBy === user.uid} 
-                                    text={itemChat.data.chatContent} 
-                                    date={itemChat.data.chatTime}
+                                {chat.data.map(itemChat => {
+                                    const isMe = itemChat.data.sendBy === user.uid 
+                                    return <ChattItem
+                                        key={itemChat.id}
+                                        isMe={isMe}
+                                        text={itemChat.data.chatContent}
+                                        date={itemChat.data.chatTime}
+                                        photo={isMe ? null : {uri: dataDoctor.data.photo}}
                                     />
                                 })}
                                 {/* secara statisc <ChattItem />

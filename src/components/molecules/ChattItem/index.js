@@ -6,11 +6,11 @@ import Other from './Other';
 //jika ada props di Chatting isme maka tampilan isme
 //jika bukan other
 //text dan date berasal dari isMe
-const ChattItem = ({ isMe,text,date }) => {
+const ChattItem = ({ isMe,text,date,photo }) => {
     if (isMe) {
         return <IsMe text={text} date={date} />
     }
-    return <Other />
+    return <Other text={text} date={date} photo={photo} />
 }
 
 export default ChattItem;
