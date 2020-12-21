@@ -3,15 +3,15 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import { DumyDoctor7 } from '../../../assets'
 import { colors, fonst } from '../../../utils'
 
-const Other = () => {
+const Other = ({text,date,photo}) => {
     return (
         <View style={styles.container}>
-            <Image style={styles.avatar} source={DumyDoctor7} />
+            <Image style={styles.avatar} source={photo} />
             <View>
                 <View style={styles.chatContent}>
-                    <Text style={styles.text}>Ibu dokter, apakah memakan jeruk tiap hari itu buruk?</Text>
+                    <Text style={styles.text}>{text}</Text>
                 </View>
-                <Text style={styles.date}>4.20 AM</Text>
+                <Text style={styles.date}>{date}</Text>
             </View>
         </View>
     )
