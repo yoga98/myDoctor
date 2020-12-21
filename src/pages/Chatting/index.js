@@ -14,13 +14,13 @@ const Chatting = ({ navigation, route }) => {
         getDataUserFromLocal();
         getDataChatting();
     }, [])
-
+    //*mendapatkan uid
     const getDataUserFromLocal = () => {
         getData('user').then(res => {
             // console.log('user:', res) //cek siapa yang login untuk ambil id/uid
             setUser(res)
         })
-    }
+    } 
 
     const getDataChatting = () => {
         const chatID = `${user.uid}_${dataDoctor.data.uid}` //mengabil data uid user dan doktor
@@ -60,15 +60,31 @@ const Chatting = ({ navigation, route }) => {
         //cara mendapatkan hari jam menit
         const today = new Date();
         // console.log('Chat Terkirim :', chatContent)
-
+        //fungsi data
         const data = {
             sendBy: user.uid,
             chatDate: today.getTime(),
             chatTime: getTimeChat(today),//diambil dari utils date
             chatContent: chatContent
         }
-        const chatID = `${user.uid}_${dataDoctor.data.uid}`
+        //*Fungsi Uid user dan Uid Doctor
+        const chatID = `${user.uid}_${dataDoctor.data.uid}` 
+        //*Url Chatting semua
         const urlFireBase = `chatting/${chatID}/allChat/${setDateChat(today)}`
+        const urlMessageUser = `messages/${user.uid}/${chatID}` //*Url pesan untuk user
+        const urlMessageDoctor = `messages/${dataDoctor.data.uid}/${chatID}` //*url pesan untuk docot
+        //*fungsi untuk history user 
+        const dataHistoryChatForUser = {
+            lastContentChat: chatContent,
+            lastChatDate: today.getTime(),
+            uidPartner: dataDoctor.data.uid
+        }
+        //*fungsi histori untuk docter
+        const dataHistoryChatForDoctor = {
+            lastContentChat: chatContent,
+            lastChatDate: today.getTime(),
+            uidPartner: user.uid
+        }
         // console.log('data untuk dikirim:', data) //tes apa ada data masuk
         //console.log('Cek url', urlFireBase) //cek url firebase benar atau tidak di console bug
         setChatContent('') //agar setelah dikirim kotak pesan kosong
@@ -78,9 +94,16 @@ const Chatting = ({ navigation, route }) => {
             .ref(urlFireBase)
             .push(data)  //mengirimkan chatID uid user dan dokter
             .then(() => {
-                console.log(
-                    setChatContent('') //jika berhasil kosongkan
-                )
+                setChatContent('') //jika berhasil kosongkan
+                //!set hsitory for user
+                Fire.database()
+                    .ref(urlMessageUser)
+                    .set(dataHistoryChatForUser)
+
+                //!set history docktor 
+                Fire.database()
+                    .ref(urlMessageDoctor)
+                    .set(dataHistoryChatForDoctor)
             }).catch(err => {
                 showError(err.message)
             })
@@ -101,13 +124,13 @@ const Chatting = ({ navigation, route }) => {
                             <View key={chat.id}>
                                 <Text style={styles.chatDate}>{chat.id}</Text>
                                 {chat.data.map(itemChat => {
-                                    const isMe = itemChat.data.sendBy === user.uid 
+                                    const isMe = itemChat.data.sendBy === user.uid
                                     return <ChattItem
                                         key={itemChat.id}
                                         isMe={isMe}
                                         text={itemChat.data.chatContent}
                                         date={itemChat.data.chatTime}
-                                        photo={isMe ? null : {uri: dataDoctor.data.photo}}
+                                        photo={isMe ? null : { uri: dataDoctor.data.photo }}
                                     />
                                 })}
                                 {/* secara statisc <ChattItem />
