@@ -89,3 +89,6 @@ menyinmpan gambar di storage firebase
 //tugas di list Doctor cek google drive
 
 //jika membuat apk maka databasenya harus sama atau bisa di copy paste di congif databse
+
+//cara mendapatkan foto dokter dengan menggunakan cara join
+rootDb itu tempat dimana databasee kita

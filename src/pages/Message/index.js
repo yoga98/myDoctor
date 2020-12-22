@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { DumyDoctor1, DumyDoctor2, DumyDoctor3 } from '../../assets'
 import { List } from '../../components'
@@ -31,22 +31,38 @@ const Message = ({ navigation }) => {
             desc: 'Oh tentu saja mun...'
         },])
     const [user, setUser] = useState({})
-        const [historyChat, setsHistoryChat] =useState([]);
+    const [historyChat, setsHistoryChat] = useState([]);
+
     useEffect(() => {
         getDataUserFromLocal()
+        const rootDb = Fire.database().ref()
         const urlHistory = `messages/${user.uid}/`;
-        Fire.database().ref(urlHistory).on('value', snapshot => {
+        const messagesDb = rootDb.child(urlHistory)
+
+        //cara join dari table doctor dan message
+        messagesDb.on('value', async snapshot => {
             // console.log('data history: ', snapshot.val())
-            if(snapshot.val()){
-                const oldData =snapshot.val();
-                const data=[];
-                Object.keys(oldData).map(key=>{
+            if (snapshot.val()) {
+                const oldData = snapshot.val();
+                const data = [];
+                
+                //karena banyak async maka harus saling menuggu mana di jadikan fungsi agar bisa menunggu
+            const promises= await Object.keys(oldData).map( async key => {
+
+                    //penggilan root dokter secara spesifik
+                     const urlUidDoctor = `doctors/${oldData[key].uidPartner}`
+
+                    //pemanggilan ke database
+                    const detailDoctor = await rootDb.child(urlUidDoctor).once('value') //bersifat async karena menuggu jadi gunakan await
+                    console.log('detai isi :', detailDoctor.val())
                     data.push({
-                        id:key,
+                        id: key,
+                        detailDoctor: detailDoctor.val(), 
                         ...oldData[key], //agar lebih ringkas dari sebelumnya
                     })
                 })
-                console.log('New Data History:' ,data)
+                await Promise.all(promises)
+                console.log('New Data History:', data)
                 setsHistoryChat(data);
             }
         })
@@ -75,12 +91,12 @@ const Message = ({ navigation }) => {
                     historyChat.map(chat => {
                         return <List
                             key={chat.id}
-                            profile={chat.uidPartner}
-                            name={chat.uidPartner}
+                            profile={{uri: chat.detailDoctor.photo}}
+                            name={chat.detailDoctor.fullName}
                             desc={chat.lastContentChat}
                             onPrees={() => navigation.navigate('Chatting')}
                         />
-                    }) 
+                    })
                 }
             </View>
         </View>
