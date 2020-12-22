@@ -73,12 +73,14 @@ const Chatting = ({ navigation, route }) => {
         const urlFireBase = `chatting/${chatID}/allChat/${setDateChat(today)}`
         const urlMessageUser = `messages/${user.uid}/${chatID}` //*Url pesan untuk user
         const urlMessageDoctor = `messages/${dataDoctor.data.uid}/${chatID}` //*url pesan untuk docot
+
         //*fungsi untuk history user 
         const dataHistoryChatForUser = {
             lastContentChat: chatContent,
             lastChatDate: today.getTime(),
             uidPartner: dataDoctor.data.uid
         }
+        
         //*fungsi histori untuk docter
         const dataHistoryChatForDoctor = {
             lastContentChat: chatContent,

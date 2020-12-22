@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { DumyDoctor1, DumyDoctor2, DumyDoctor3 } from '../../assets'
 import { List } from '../../components'
-import { colors, fonst } from '../../utils'
-
+import { Fire } from '../../config'
+import { colors, fonst, getData } from '../../utils'
 //useState di import dari react
 //menggunakan State hooks fungsional component
 //menggunakan metode useState
-const Message = ({navigation}) => {
+const Message = ({ navigation }) => {
     // Mendeskripsikan menjadi Doctor
     //jika kata pertama docktor maka setDoctor
     //atau jika pertama use maka setuser
@@ -29,8 +29,36 @@ const Message = ({navigation}) => {
             profile: DumyDoctor3,
             name: "John McParker Steve",
             desc: 'Oh tentu saja mun...'
-        },]
-    )
+        },])
+    const [user, setUser] = useState({})
+        const [historyChat, setsHistoryChat] =useState([]);
+    useEffect(() => {
+        getDataUserFromLocal()
+        const urlHistory = `messages/${user.uid}/`;
+        Fire.database().ref(urlHistory).on('value', snapshot => {
+            // console.log('data history: ', snapshot.val())
+            if(snapshot.val()){
+                const oldData =snapshot.val();
+                const data=[];
+                Object.keys(oldData).map(key=>{
+                    data.push({
+                        id:key,
+                        ...oldData[key], //agar lebih ringkas dari sebelumnya
+                    })
+                })
+                console.log('New Data History:' ,data)
+                setsHistoryChat(data);
+            }
+        })
+    }, [user.uid])
+
+
+    const getDataUserFromLocal = () => {
+        getData('user').then(res => {
+            // console.log('user:', res) //cek siapa yang login untuk ambil id/uid
+            setUser(res)
+        })
+    }
     return (
         <View style={styles.page}>
             <View style={styles.content}>
@@ -44,15 +72,15 @@ const Message = ({navigation}) => {
                 gunakan id 
                 */}
                 {
-                    doctors.map(doctor => {
+                    historyChat.map(chat => {
                         return <List
-                            key={doctor.id}
-                            profile={doctor.profile}
-                            name={doctor.name}
-                            desc={doctor.desc} 
-                            onPrees={()=>navigation.navigate('Chatting')}
-                            />
-                    })
+                            key={chat.id}
+                            profile={chat.uidPartner}
+                            name={chat.uidPartner}
+                            desc={chat.lastContentChat}
+                            onPrees={() => navigation.navigate('Chatting')}
+                        />
+                    }) 
                 }
             </View>
         </View>
